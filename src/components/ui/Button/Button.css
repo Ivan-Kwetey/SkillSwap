@@ -1,0 +1,49 @@
+.button__primary {
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #0f0f0f;
+  color: white;
+  font-size: 15px;
+}
+
+.button--navbar {
+  font-size: 15px;
+  padding: 10px 30px;
+}
+
+.button--navbar:hover {
+  background-color: #262626;
+}
+
+.button--hero {
+  background-color: #0072e5;
+  color: white;
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--hero:hover {
+  background-color: #006bd6;
+}
+
+.button--mission {
+  background-color: #ffffff;
+  color: #0f0f0f;
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--mission:hover {
+  background-color: #f2f2f2;
+}
+
+.button--community {
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--community:hover {
+  background-color: #262626;
+}

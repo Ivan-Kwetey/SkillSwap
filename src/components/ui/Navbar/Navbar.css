@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 134px;
+  margin: 0;
+  background-color: #ffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar__buttons {
+  display: flex;
+  gap: 14px;
+}
+
+.navbar__menu {
+  display: flex;
+}
+
+.navbar__logo {
+  cursor: pointer;
+}

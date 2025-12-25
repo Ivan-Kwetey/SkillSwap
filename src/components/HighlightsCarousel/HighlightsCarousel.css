@@ -1,0 +1,12 @@
+.highlights__track {
+  display: flex;
+  gap: 20px;
+}
+
+.highlights {
+  padding: 0 100px 0 134px;
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
