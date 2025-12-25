@@ -1,7 +1,7 @@
 import React from "react";
 import { highlights } from "../../data/Highlights";
 import HighlightCard from "../HighlightCard/HighlightCard";
-import "./HighlightsCarousel.css"
+import "./HighlightsCarousel.css";
 
 const HighlightsCarousel = () => {
   return (

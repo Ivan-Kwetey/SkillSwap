@@ -4,9 +4,33 @@
 }
 
 .highlights {
-  padding: 0 100px 0 134px;
+  padding: 0 134px;
   overflow: hidden;
-  overflow-x: auto;
+  /* overflow-x: auto; */
+  scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+}
+
+.highlights__track {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+
+.highlights__track::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+.highlights::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+.highlights__track {
+  scroll-snap-type: x mandatory;
+}
+
+.highlight-card {
+  scroll-snap-align: start;
 }

@@ -29,3 +29,8 @@
   gap: 10px;
   align-items: start;
 }
+
+/* snap */
+.highlight-card {
+  scroll-snap-align: start;
+}
