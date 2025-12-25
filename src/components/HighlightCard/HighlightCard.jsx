@@ -3,6 +3,7 @@ import Tag from "../ui/Tag/Tag";
 import "./HighlightCard.css";
 import UserName from "../ui/UserName/UserName";
 import Avatar from "../ui/Avatar/Avatar";
+import Location from "../ui/Location/Location";
 
 const HighlightCard = ({ videoUrl, tags, user }) => {
   return (
@@ -24,7 +25,10 @@ const HighlightCard = ({ videoUrl, tags, user }) => {
         </div>
         <div className="highlight-card__user">
           <Avatar src={user.avatar} alt={user.name} />
-          <UserName label={user.name} />
+          <div className="highlight-card__user-info">
+            <UserName label={user.name} />
+            <Location variant="highlight" city={user.location.city} state={user.location.state} />
+          </div>
         </div>
       </div>
     </article>

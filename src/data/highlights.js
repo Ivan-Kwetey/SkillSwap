@@ -19,6 +19,10 @@ export const highlights = [
     user: {
       name: "James",
       avatar: jamesAvatar,
+      location: {
+        city: "Wichita",
+        state: "WA",
+      },
     },
   },
   {
@@ -29,6 +33,10 @@ export const highlights = [
     user: {
       name: "Samuel",
       avatar: samuelAvatar,
+      location: {
+        city: "Albany",
+        state: "NY",
+      },
     },
   },
   {
@@ -38,6 +46,10 @@ export const highlights = [
     user: {
       name: "Chelsea",
       avatar: chelseaAvatar,
+      location: {
+        city: "Seattle",
+        state: "WA",
+      },
     },
   },
   {
@@ -47,6 +59,10 @@ export const highlights = [
     user: {
       name: "Alex",
       avatar: alexAvatar,
+      location: {
+        city: "Miami",
+        state: "FL",
+      },
     },
   },
   {
@@ -56,6 +72,10 @@ export const highlights = [
     user: {
       name: "Caroline",
       avatar: carolineAvatar,
+      location: {
+        city: "Denver",
+        state: "CO",
+      },
     },
   },
   {
@@ -65,6 +85,8 @@ export const highlights = [
     user: {
       name: "Wendy",
       avatar: wendyAvatar,
+      location: "Atlanta",
+      state: "GA",
     },
   },
 ];

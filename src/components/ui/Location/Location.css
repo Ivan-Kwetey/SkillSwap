@@ -1,0 +1,9 @@
+.location {
+  color: #b8b8b8;
+}
+
+
+.location--highlight{
+    font-size: 12px;
+    font-weight: 500;
+}

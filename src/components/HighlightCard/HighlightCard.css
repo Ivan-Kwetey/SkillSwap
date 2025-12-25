@@ -34,3 +34,8 @@
 .highlight-card {
   scroll-snap-align: start;
 }
+
+.highlight-card__user-info {
+  display: flex;
+  flex-direction: column;
+}
