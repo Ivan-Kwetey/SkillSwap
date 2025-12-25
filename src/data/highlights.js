@@ -78,6 +78,7 @@ export const highlights = [
       },
     },
   },
+
   {
     id: crypto.randomUUID(),
     videoUrl: swimmingVideo,
@@ -85,8 +86,10 @@ export const highlights = [
     user: {
       name: "Wendy",
       avatar: wendyAvatar,
-      location: "Atlanta",
-      state: "GA",
+      location: {
+        city: "Atlanta",
+        state: "GA",
+      },
     },
   },
 ];
