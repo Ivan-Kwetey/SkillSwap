@@ -6,6 +6,7 @@
   background-color: #0f0f0f;
   color: white;
   font-size: 15px;
+  width: fit-content;
 }
 
 .button--navbar {
@@ -46,4 +47,15 @@
 
 .button--community:hover {
   background-color: #262626;
+}
+
+/* //get-started */
+.button--get-started {
+  padding: 20px 30px;
+  background-color: white;
+  color: #0f0f0f;
+  font-size: 18px;
+}
+.button--get-started:hover {
+  background-color: #f2f2f2;
 }

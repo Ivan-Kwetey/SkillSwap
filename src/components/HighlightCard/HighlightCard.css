@@ -24,12 +24,6 @@
   gap: 5px;
   flex-wrap: wrap;
 }
-.highlight-card__user {
-  display: flex;
-  gap: 10px;
-  align-items: start;
-}
-
 /* snap */
 .highlight-card {
   scroll-snap-align: start;
@@ -39,3 +33,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.highlight-card__user-identity {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+.highlight-card__user {
+  display: flex;
+  justify-content: space-between;
+}
+
