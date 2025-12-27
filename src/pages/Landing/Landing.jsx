@@ -5,7 +5,7 @@ import Mission from "./Mission/Mission";
 import Community from "./Community/Community";
 import Purpose from "./Purpose/Purpose";
 import GetStarted from "./GetStarted/GetStarted";
-
+import Footer from "../../components/ui/Footer/Footer";
 
 const Landing = () => {
   const handleRegister = () => alert("registered!");
@@ -17,8 +17,9 @@ const Landing = () => {
       <Hero handleRegister={handleRegister} handleSignIn={handleSignIn} />
       <Mission />
       <Community />
-      <Purpose/>
-      <GetStarted/>
+      <Purpose />
+      <GetStarted />
+      <Footer />
     </>
   );
 };
