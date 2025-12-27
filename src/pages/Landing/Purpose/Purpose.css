@@ -22,15 +22,15 @@
   display: flex;
   gap: 15px;
   flex-direction: column;
-  width: 419px;
+  width: 100%;
 }
 
-.purple__items {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+.purpose__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 50px;
+  width: 100%;
 }
 
 .purpose__subtitle {

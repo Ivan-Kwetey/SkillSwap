@@ -15,7 +15,7 @@ const Footer = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      setVisible(window.scrollY > 1000);
+      setVisible(window.scrollY > 800);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);

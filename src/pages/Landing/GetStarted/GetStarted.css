@@ -38,16 +38,17 @@
   flex-direction: column;
   gap: 30px;
 }
+
 .get-started__steps-process {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  list-style-type: none;
-  counter-reset: step;
+  list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
-  flex-wrap: wrap;
 }
+
 .get-started__steps {
   background-color: white;
   border-radius: 10px;
@@ -60,7 +61,7 @@
 .get-started__steps-item {
   display: flex;
   flex-direction: column;
-  width: 333px;
+  width: 100%;
   gap: 20px;
   counter-increment: step;
 }
@@ -98,6 +99,7 @@
   color: #525252;
   margin: 0;
   line-height: 22px;
+  width: 100%;
 }
 
 .get-started__steps-paragraph {
