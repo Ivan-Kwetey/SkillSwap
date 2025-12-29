@@ -13,7 +13,6 @@ const Landing = () => {
 
   return (
     <>
-      <Navbar handleRegister={handleRegister} handleSignIn={handleSignIn} />
       <Hero handleRegister={handleRegister} handleSignIn={handleSignIn} />
       <Mission />
       <Community />

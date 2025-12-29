@@ -1,11 +1,17 @@
 .mission {
   background-color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+}
+
+.mission__information {
   padding: 140px 134px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  max-width: 1728px;
 }
 
 .mission__description {
@@ -18,7 +24,6 @@
   overflow: hidden;
   width: 100%;
 }
-
 
 .mission__title {
   width: 100%;

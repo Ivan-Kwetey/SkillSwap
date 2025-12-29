@@ -1,9 +1,11 @@
 .location {
   color: #b8b8b8;
+  height: fit-content;
 }
 
 
 .location--highlight{
     font-size: 12px;
     font-weight: 500;
+    height: fit-content;
 }

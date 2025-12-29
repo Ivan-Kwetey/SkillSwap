@@ -4,13 +4,15 @@
 }
 
 .highlights {
-  padding: 0 134px;
+  /* padding: 0 134px; */
   overflow: hidden;
   /* overflow-x: auto; */
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
+  width: 100%;
+  max-width: 1460px;
 }
 
 .highlights__track {

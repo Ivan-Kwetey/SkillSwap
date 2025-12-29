@@ -59,3 +59,34 @@
 .button--get-started:hover {
   background-color: #f2f2f2;
 }
+
+.button--signin {
+  background-color: #0072e5;
+  font-size: 14px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.button--register {
+  font-size: 14px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.button--clear-filters {
+  background-color: white;
+  color: #0f0f0f;
+  font-size: 12px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.button--apply-filters {
+  background-color: #0072e5;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 20px;
+  width: 100%;
+}

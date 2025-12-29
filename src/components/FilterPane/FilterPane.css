@@ -1,0 +1,60 @@
+.filter-titles {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400px;
+  letter-spacing: -0.3px;
+}
+
+.filter-pane {
+  display: flex;
+  flex-direction: column;
+  background-color: #0f0f0f;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 20px;
+  width: 250px;
+}
+
+.filter-section {
+  color: #a1a1a1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #262626;
+  padding: 15px 0;
+  gap: 10px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* background-color: #0e0e0e;
+  padding: 0 15px;
+  border-radius: 10px; */
+}
+
+.category-filter {
+  height: 120px;
+  overflow: scroll;
+}
+
+.location-filter {
+  height: 200px;
+  overflow: scroll;
+}
+
+.filter-actions {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  padding: 15px 0 0 0;
+}
+
+.filter-pane__title {
+  font-size: 18px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: -0.5;
+  margin: 0;
+  padding-bottom: 10px;
+}

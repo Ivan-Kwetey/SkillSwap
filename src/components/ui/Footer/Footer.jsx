@@ -56,16 +56,18 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      {visible && (
-        <button
-          onClick={scrollToTop}
-          aria-label="Scroll to top"
-          className="footer__scroll-top"
-          type="button"
-        >
-          <img src={ScrollUp} alt="Scroll to top" />
-        </button>
-      )}
+      <div className="scroll_up__container">
+        {visible && (
+          <button
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+            className="footer__scroll-top"
+            type="button"
+          >
+            <img src={ScrollUp} alt="Scroll to top" />
+          </button>
+        )}
+      </div>
     </footer>
   );
 };

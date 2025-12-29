@@ -1,0 +1,5 @@
+.browse-skills__content{
+    display: flex;
+    gap: 100px;
+    padding: 100px 134px;
+}

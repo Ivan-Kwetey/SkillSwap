@@ -14,7 +14,7 @@ const Community = () => {
         </h3>
         <Button text="Discover more" variant="community" />
       </div>
-      <HighlightsCarousel/>
+      <HighlightsCarousel className="highlights-carousel-insert" />
     </section>
   );
 };
