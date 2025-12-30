@@ -4,8 +4,7 @@ import Footer from "../../components/ui/Footer/Footer";
 const Home = () => {
   return (
     <div className="home">
-      hello
-      <Footer />
+      <Footer/>
     </div>
   );
 };

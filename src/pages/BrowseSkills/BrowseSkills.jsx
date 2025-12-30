@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./BrowseSkills.css";
 import Profile from "../../components/Profile/Profile";
 import SkillSearch from "../../components/SkillSearch/SkillSearch";
-import SkillCard from "../../components/SkillCard/SkillCard";
+import UserCard from "../../components/ui/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
 import Footer from "../../components/ui/Footer/Footer";
 import skillsData from "../../data/skills";
+import { BrowseGraphic } from "../../assets/Images";
 
 const BrowseSkills = () => {
   const [allSkills, setAllSkills] = useState([]);
@@ -42,19 +43,28 @@ const BrowseSkills = () => {
 
   return (
     <div className="browse-skills">
-      <div className="browse-skills__content">
-        <FilterPane skills={allSkills} onApply={handleApplyFilters} />
+      <div className="browse-skills__layout">
+        <div className="browse-skills__content">
+          <FilterPane
+            className="browse-skills__filter-pane"
+            skills={allSkills}
+            onApply={handleApplyFilters}
+          />
 
-        <div className="browse-skills__results">
-          <SkillSearch />
-          {filteredSkills.map((user) => (
-            <SkillCard key={user.id} user={user} />
-          ))}
+          {/* <SkillSearch /> */}
+
+          {/* <div className="browse-skills__results">
+            <div className="browse-skills__user-card">
+              {filteredSkills.map((user) => (
+                <UserCard key={user.id} user={user} />
+              ))}
+            </div>
+          </div> */}
         </div>
-
         <Profile />
       </div>
-      <Footer />
+      <img src={BrowseGraphic} alt="" className="browse-skills__illustration" />
+      {/* <Footer /> */}
     </div>
   );
 };

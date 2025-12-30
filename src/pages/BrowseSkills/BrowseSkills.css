@@ -1,5 +1,51 @@
-.browse-skills__content{
-    display: flex;
-    gap: 100px;
-    padding: 100px 134px;
+.browse-skills {
+  position: relative;
+  /* display: flex; */
+  flex-direction: column;
+  gap: 50px;
+  height: auto;
+}
+
+.browse-skills__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  top: 500px;
+  padding: 100px;
+  height: auto;
+  overflow: hidden;
+}
+
+.browse-skills__results {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 650px;
+  position: relative;
+  padding: 0 15px;
+  border-radius: 20px;
+}
+
+.browse-skills__illustration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.browse-skills__user-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.browse-skills__layout {
+  /* display: flex; */
+  justify-content: center;
 }

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import "./FilterPane.css";
 import FilterButton from "../ui/FilterButton/Filterbutton";
 import Button from "../ui/Button/Button";
+import SearchBar from "../ui/SearchBar/SearchBar";
 
 const FilterPane = ({ skills = [], onApply }) => {
   const [filters, setFilters] = useState({
@@ -59,9 +60,11 @@ const FilterPane = ({ skills = [], onApply }) => {
 
   return (
     <aside className="filter-pane">
-      <h3 className="filter-pane__title">Advanced search</h3>
-      
-      //category
+      <div className="filter-pane__header">
+        <h3 className="filter-pane__title">Search skills</h3>
+        <SearchBar />
+      </div>
+      {/* //category */}
       <section className="filter-section">
         <h4 className="filter-titles">Skill Category</h4>
         <div className="filter-options category-filter">
@@ -75,8 +78,7 @@ const FilterPane = ({ skills = [], onApply }) => {
           ))}
         </div>
       </section>
-
-      //location
+      {/* //location */}
       <section className="filter-section">
         <h4 className="filter-titles">Location</h4>
         <div className="filter-options location-filter">
@@ -90,8 +92,7 @@ const FilterPane = ({ skills = [], onApply }) => {
           ))}
         </div>
       </section>
-
-      //mode
+      {/* //mode */}
       <section className="filter-section">
         <h4 className="filter-titles">Mode</h4>
         <div className="filter-options mode">
@@ -105,8 +106,7 @@ const FilterPane = ({ skills = [], onApply }) => {
           ))}
         </div>
       </section>
-
-      //actions
+      {/* //actions */}
       <div className="filter-actions">
         <Button
           variant="clear-filters"

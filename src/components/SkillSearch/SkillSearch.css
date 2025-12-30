@@ -1,0 +1,17 @@
+.skill-search,
+.skill-search__dropdowns {
+  display: flex;
+}
+
+.skill-search {
+  width: 720px;
+  gap: 14px;
+}
+
+.skill-search__dropdowns {
+  gap: 14px;
+}
+
+.skill-search__dropdowns{
+    width: 100%;
+}

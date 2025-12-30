@@ -6,5 +6,8 @@ import X from "../assets/footer/x.svg";
 import Instagram from "../assets/footer/instagram.svg";
 import FullLogo from "../assets/footer/fullLogo.svg";
 import ScrollUp from "../assets/footer/scrollUp.svg";
+import BrowseGraphic from "../assets/browse/browseSkillGraphic.png"
+import SearchIcon from "../assets/search/searchIcon.svg"
+import DropdownIcon from "../assets/search/DropdownIcon.svg"
 
-export { Logo, Background, Heroart, Facebook, X, Instagram, FullLogo, ScrollUp };
+export { Logo, Background, Heroart, Facebook, X, Instagram, FullLogo, ScrollUp, BrowseGraphic, SearchIcon , DropdownIcon};

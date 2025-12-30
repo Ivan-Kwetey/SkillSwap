@@ -1,7 +1,7 @@
 import React from "react";
-import "./Location.css";
+import "./UserLocation.css";
 
-const Location = ({ city, state, variant = "primary" }) => {
+const UserLocation = ({ city, state, variant = "primary" }) => {
   return (
     <span className={`location location--${variant}`}>
       {city}, {state}
@@ -9,4 +9,4 @@ const Location = ({ city, state, variant = "primary" }) => {
   );
 };
 
-export default Location;
+export default UserLocation;

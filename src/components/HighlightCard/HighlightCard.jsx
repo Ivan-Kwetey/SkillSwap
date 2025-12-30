@@ -3,7 +3,7 @@ import Tag from "../ui/Tag/Tag";
 import "./HighlightCard.css";
 import UserName from "../ui/UserName/UserName";
 import Avatar from "../ui/Avatar/Avatar";
-import Location from "../ui/Location/Location";
+import UserLocation from "../ui/UserLocation/UserLocation";
 import { Link } from "react-router-dom";
 import linkIcon from "../../assets/user/link.svg";
 
@@ -30,7 +30,7 @@ const HighlightCard = ({ videoUrl, tags, user }) => {
             <Avatar src={user.avatar} alt={user.name} />
             <div className="highlight-card__user-info">
               <UserName label={user.name} />
-              <Location
+              <UserLocation
                 variant="highlight"
                 city={user.location.city}
                 state={user.location.state}

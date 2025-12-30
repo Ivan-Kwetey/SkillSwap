@@ -53,8 +53,24 @@
 .filter-pane__title {
   font-size: 18px;
   color: white;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.5;
   margin: 0;
   padding-bottom: 10px;
+}
+
+.filter-pane {
+  /* position: fixed; */
+  /* top: 160px; 
+  left: 134px;  */
+  height: fit-content;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.filter-pane__header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #262626;
+  padding: 0 0 15px 0;
 }

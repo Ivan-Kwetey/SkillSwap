@@ -6,3 +6,10 @@
 .user-name--primary {
   color: white;
 }
+
+.user-name--user-card{
+  color: #0F0F0F;
+  letter-spacing: -0.2;
+  font-size: 16px;
+  font-weight: 700;
+}
