@@ -8,8 +8,9 @@
 }
 
 .user-name--user-card{
-  color: #0F0F0F;
+  color: #ffffff;
   letter-spacing: -0.2;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: 700;
+  letter-spacing: -2px;
 }

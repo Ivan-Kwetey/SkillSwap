@@ -8,6 +8,12 @@
 
 
 .highlight-card__avatar--user-card{
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+}
+
+.highlight-card__avatar--member{
+  width: 155px;
+  height: 155px;
+  border: 1px solid black;
 }

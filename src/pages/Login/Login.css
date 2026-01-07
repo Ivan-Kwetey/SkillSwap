@@ -1,4 +1,5 @@
-.login {
+FormInput{
+  color: #737373;
 }
 .login__form {
   display: flex;

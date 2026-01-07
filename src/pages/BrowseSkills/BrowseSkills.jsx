@@ -1,70 +1,255 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./BrowseSkills.css";
 import Profile from "../../components/Profile/Profile";
-import SkillSearch from "../../components/SkillSearch/SkillSearch";
-import UserCard from "../../components/ui/UserCard/UserCard";
+import UserCard from "../../components/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
 import Footer from "../../components/ui/Footer/Footer";
-import skillsData from "../../data/skills";
-import { BrowseGraphic } from "../../assets/Images";
+import skillsDataUsers from "../../data/skills";
+import SearchBar from "../../components/ui/SearchBar/SearchBar";
+import { fetchUsers, sendRequest, cancelRequest } from "../../api/api";
+
+const ITEMS_PER_PAGE = 4;
 
 const BrowseSkills = () => {
+  const currentUserId = "user_me";
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [requests, setRequests] = useState(() => {
+    const saved = localStorage.getItem("skillSwapRequests");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [allSkills, setAllSkills] = useState([]);
   const [filteredSkills, setFilteredSkills] = useState([]);
 
+  /* fetching users*/
   useEffect(() => {
-    setAllSkills(skillsData);
-    setFilteredSkills(skillsData);
+    fetchUsers(12)
+      .then((apiUsers) => {
+        const usersWithData = apiUsers.map((apiUser, idx) => {
+          const localUser =
+            skillsDataUsers[idx % skillsDataUsers.length];
+
+          return {
+            id: crypto.randomUUID(),
+            name: `${apiUser.name.first} ${apiUser.name.last}`,
+            avatar: apiUser.picture.large,
+            bio: localUser.bio,
+            location: `${apiUser.location.city}, ${apiUser.location.country}`,
+            skills: localUser.skills,
+            rating: localUser.rating,
+          };
+        });
+
+        setAllSkills(usersWithData);
+        setFilteredSkills(usersWithData);
+      })
+      .catch(console.error);
   }, []);
 
-  const handleApplyFilters = (filters) => {
-    const filtered = allSkills.filter((user) => {
-      const categoryMatch =
-        filters.categories.length === 0 ||
-        user.skills.some((skill) =>
-          filters.categories.includes(skill.category)
-        );
+  /* persist requests */
+  useEffect(() => {
+    localStorage.setItem(
+      "skillSwapRequests",
+      JSON.stringify(requests)
+    );
+  }, [requests]);
 
-      const modeMatch =
-        filters.modes.length === 0 ||
-        user.skills.some((skill) =>
-          skill.modes.some((mode) => filters.modes.includes(mode))
-        );
+  /* pagination */
+  const totalPages = Math.ceil(
+    filteredSkills.length / ITEMS_PER_PAGE
+  );
 
-      const locationMatch =
-        filters.locations.length === 0 ||
-        filters.locations.includes(user.location);
+  const currentUsers = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    return filteredSkills.slice(start, end);
+  }, [filteredSkills, currentPage]);
 
-      return categoryMatch && modeMatch && locationMatch;
-    });
-
-    setFilteredSkills(filtered);
+  const goToPage = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  /* request handlers */
+  const handleSendRequest = (targetUser) => {
+    if (
+      requests.some(
+        (r) =>
+          r.fromUserId === currentUserId &&
+          r.toUserId === targetUser.id
+      )
+    )
+      return;
+
+    sendRequest(targetUser.id)
+      .then((data) => {
+        setRequests((prev) => [
+          ...prev,
+          {
+            id: data.id || crypto.randomUUID(),
+            fromUserId: currentUserId,
+            toUserId: targetUser.id,
+            status: "pending",
+            createdAt: Date.now(),
+          },
+        ]);
+      })
+      .catch(console.error);
+  };
+
+  const handleCancelRequest = (targetUserId) => {
+    const req = requests.find(
+      (r) =>
+        r.fromUserId === currentUserId &&
+        r.toUserId === targetUserId
+    );
+    if (!req) return;
+
+    cancelRequest(req.id)
+      .then(() =>
+        setRequests((prev) =>
+          prev.filter((r) => r.id !== req.id)
+        )
+      )
+      .catch(console.error);
+  };
+
+  /* for searching */
+  const handleSearch = (query) => {
+    setCurrentPage(1);
+
+    if (!query) {
+      setFilteredSkills(allSkills);
+      return;
+    }
+
+    const q = query.toLowerCase();
+    setFilteredSkills(
+      allSkills.filter((u) =>
+        u.name.toLowerCase().includes(q) ||
+        u.location.toLowerCase().includes(q) ||
+        u.skills.some(
+          (s) =>
+            s.name.toLowerCase().includes(q) ||
+            s.category.toLowerCase().includes(q)
+        )
+      )
+    );
+  };
+
+  /* filtering */
+  const handleApplyFilters = (filters) => {
+    setCurrentPage(1);
+
+    setFilteredSkills(
+      allSkills.filter((u) => {
+        const categoryMatch =
+          !filters.categories.length ||
+          u.skills.some((s) =>
+            filters.categories.includes(s.category)
+          );
+
+        const modeMatch =
+          !filters.modes.length ||
+          u.skills.some((s) =>
+            s.modes?.some((m) => filters.modes.includes(m))
+          );
+
+        const locationMatch =
+          !filters.locations.length ||
+          filters.locations.includes(u.location);
+
+        return categoryMatch && modeMatch && locationMatch;
+      })
+    );
+  };
+
+  /* request count */
+  const sentRequestsCount = requests.filter(
+    (r) => r.fromUserId === currentUserId
+  ).length;
+
+  const pendingRequestsCount = requests.filter(
+    (r) =>
+      r.toUserId === currentUserId &&
+      r.status === "pending"
+  ).length;
+
+  /*page rendering */
   return (
     <div className="browse-skills">
-      <div className="browse-skills__layout">
-        <div className="browse-skills__content">
-          <FilterPane
-            className="browse-skills__filter-pane"
-            skills={allSkills}
-            onApply={handleApplyFilters}
-          />
-
-          {/* <SkillSearch /> */}
-
-          {/* <div className="browse-skills__results">
-            <div className="browse-skills__user-card">
-              {filteredSkills.map((user) => (
-                <UserCard key={user.id} user={user} />
-              ))}
-            </div>
-          </div> */}
-        </div>
-        <Profile />
+      <div className="browse-skills__search">
+        <SearchBar onSearch={handleSearch} />
       </div>
-      <img src={BrowseGraphic} alt="" className="browse-skills__illustration" />
-      {/* <Footer /> */}
+
+      <div className="browse-layout">
+        <FilterPane
+          skills={allSkills}
+          onApply={handleApplyFilters}
+        />
+
+        <main className="main-content">
+          <div className="skill-cards">
+            {currentUsers.map((user) => (
+              <UserCard
+                key={user.id}
+                user={user}
+                hasRequested={requests.some(
+                  (r) =>
+                    r.fromUserId === currentUserId &&
+                    r.toUserId === user.id
+                )}
+                onRequest={() => handleSendRequest(user)}
+                onCancel={() => handleCancelRequest(user.id)}
+              />
+            ))}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button
+                className="pagination__btn"
+                disabled={currentPage === 1}
+                onClick={() => goToPage(currentPage - 1)}
+              >
+                Prev
+              </button>
+
+              {[...Array(totalPages)].map((_, index) => {
+                const page = index + 1;
+                return (
+                  <button
+                    key={page}
+                    className={`pagination__btn ${
+                      currentPage === page ? "active" : ""
+                    }`}
+                    onClick={() => goToPage(page)}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
+
+              <button
+                className="pagination__btn"
+                disabled={currentPage === totalPages}
+                onClick={() => goToPage(currentPage + 1)}
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </main>
+
+        <Profile
+          sentCount={sentRequestsCount}
+          pendingCount={pendingRequestsCount}
+        />
+      </div>
+
+      <Footer />
     </div>
   );
 };

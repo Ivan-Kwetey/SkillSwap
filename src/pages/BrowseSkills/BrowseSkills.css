@@ -1,32 +1,67 @@
 .browse-skills {
   position: relative;
-  /* display: flex; */
-  flex-direction: column;
-  gap: 50px;
-  height: auto;
+  /* height: 100vh; */
+  /* overflow: hidden; */
 }
 
-.browse-skills__content {
+.browse-skills__search {
+  position: sticky;
+  top: 61px;
+  z-index: 900;
+  padding: 15px 500px;
+  background-color: #e0e0e0;
+
+  /* Frosted glass base */
+  /* background: rgba(198, 198, 198, 0.623);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); */
+
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
+
+  /* Subtle shine */
+  /* box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6); */
+
+  /* Glass border */
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+
+  z-index: 10;
+}
+
+.browse-layout {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  padding: 50px 134px 0 134px;
+  justify-content: space-between;
+  max-width: 1456px;
+  justify-self: center;
+  width: 100%;
+  /* background-color: beige; */
+}
+
+/* .left-sidebar {
+  width: 100%;
+  padding: 20px 0;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  /* padding-top: 100px; */
+
+.main-content {
+  overflow-y: auto;
+  max-width: 1130px;
+}
+
+.skill-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  top: 500px;
-  padding: 100px;
-  height: auto;
-  overflow: hidden;
 }
 
-.browse-skills__results {
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  height: 650px;
-  position: relative;
-  padding: 0 15px;
-  border-radius: 20px;
+.right-sidebar {
+  /* width: 100%; */
+  padding: 20px 0;
+  border-left: 1px solid #e0e0e0;
+  overflow-y: auto;
 }
 
 .browse-skills__illustration {
@@ -39,13 +74,33 @@
   z-index: -1;
 }
 
-.browse-skills__user-card {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
 }
 
-.browse-skills__layout {
-  /* display: flex; */
-  justify-content: center;
+.pagination__btn {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.pagination__btn:hover {
+  background: #f4f4f4;
+}
+
+.pagination__btn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

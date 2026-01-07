@@ -1,0 +1,48 @@
+.member-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.member-profile__content {
+  max-width: 860px;
+  height: fit-content;
+  padding: 15px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.member-profile__top,
+.member-profile__mid {
+  padding-bottom: 100px;
+}
+
+.member-profile__page {
+  max-width: 1460px;
+  display: flex;
+  justify-content: space-between;
+  background-color: aqua;
+  width: 100%;
+  padding: 0 50px;
+  gap: 50px;
+  height: fit-content;
+}
+
+.member-profile__swap-title-container {
+    padding: 10px 0;
+    border-bottom: 2px solid black;
+}
+
+.member-profile__swap-title{
+    margin: 0;
+}
+.member-profile__swap-title{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.member-profile__completed-banner{
+    display: flex;
+    justify-content: space-between;
+}

@@ -2,14 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 
 const users = [
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Keanu Jackson",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Keanu Jackson",
-    },
-    location: "New York",
-    bio: "Full-stack developer and mentor, passionate about teaching web technologies.",
+    rating: 4.6,
+    bio: "Full-stack developer and mentor, passionate about teaching web tech.",
     skills: [
       {
         name: "Frontend Web Development",
@@ -29,13 +23,8 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Mara Laurent",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Mara Laurent",
-    },
-    location: "Paris",
+
+    rating: 4.4,
     bio: "UX designer focused on user-centered experiences for web and mobile apps.",
     skills: [
       { name: "UX Design", category: "Design", modes: ["Online", "In-Person"] },
@@ -43,13 +32,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Luis Calderon",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Luis Calderon",
-    },
-    location: "San Francisco",
+    rating: 3.6,
     bio: "Data analyst and Python instructor helping beginners turn data into insights.",
     skills: [
       {
@@ -65,13 +48,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Hiro Tanaka",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Hiro Tanaka",
-    },
-    location: "Tokyo",
+    rating: 4.7,
     bio: "Master woodworker teaching traditional and modern techniques.",
     skills: [
       { name: "Woodworking", category: "Crafts", modes: ["In-Person"] },
@@ -83,13 +60,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Elena Rossi",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Elena Rossi",
-    },
-    location: "Florence",
+    rating: 3.7,
     bio: "Professional painter sharing techniques in oil painting and sketching.",
     skills: [
       {
@@ -105,13 +76,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "David Kovacs",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=David Kovacs",
-    },
-    location: "Budapest",
+    rating: 4.3,
     bio: "Engineer specialized in mechanical design and 3D modeling.",
     skills: [
       {
@@ -127,13 +92,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Noah Brooks",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Noah Brooks",
-    },
-    location: "Austin",
+    rating: 3.3,
     bio: "Backend developer building scalable APIs and databases.",
     skills: [
       {
@@ -149,13 +108,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Sofia Moreno",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Sofia Moreno",
-    },
-    location: "Madrid",
+    rating: 3.1,
     bio: "Digital illustrator and character designer with focus on storytelling.",
     skills: [
       {
@@ -171,13 +124,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Tomasz Nowak",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Tomasz Nowak",
-    },
-    location: "Kraków",
+    rating: 3.9,
     bio: "Video editor and motion graphics artist for media projects.",
     skills: [
       {
@@ -193,13 +140,8 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Yara Haddad",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Yara Haddad",
-    },
-    location: "Cairo",
+
+    rating: 3.8,
     bio: "Language tutor helping students improve French and academic writing.",
     skills: [
       {
@@ -211,13 +153,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Mateo Ibanez",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Mateo Ibanez",
-    },
-    location: "Buenos Aires",
+    rating: 3.5,
     bio: "Full-stack developer and Python enthusiast, teaching programming and web apps.",
     skills: [
       {
@@ -233,13 +169,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Chen Wei",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Chen Wei",
-    },
-    location: "Shanghai",
+    rating: 3.7,
     bio: "Graphic designer creating visual identities for digital and print media.",
     skills: [
       {
@@ -251,13 +181,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Hanna Muller",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Hanna Muller",
-    },
-    location: "Berlin",
+    rating: 4.7,
     bio: "Creative coder and interaction designer with focus on animations.",
     skills: [
       {
@@ -269,13 +193,8 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Samuel Okoye",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Samuel Okoye",
-    },
-    location: "Lagos",
+
+    rating: 3.2,
     bio: "Engineer specializing in renewable energy and sustainable design.",
     skills: [
       {
@@ -291,13 +210,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Lucas Pereira",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Lucas Pereira",
-    },
-    location: "São Paulo",
+    rating: 2.7,
     bio: "Craftsman teaching woodworking and artisanal furniture techniques.",
     skills: [
       { name: "Woodworking", category: "Crafts", modes: ["In-Person"] },
@@ -309,13 +222,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Nina Petrova",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Nina Petrova",
-    },
-    location: "Moscow",
+    rating: 4.7,
     bio: "Visual artist and illustrator specializing in comics and digital art.",
     skills: [
       {
@@ -331,13 +238,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Arjun Malik",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Arjun Malik",
-    },
-    location: "Mumbai",
+    rating: 4.9,
     bio: "Educator teaching coding and app development to young professionals.",
     skills: [
       {
@@ -353,13 +254,8 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Emre Kaya",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Emre Kaya",
-    },
-    location: "Istanbul",
+
+    rating: 4.6,
     bio: "Video editor and motion graphics creator for digital media.",
     skills: [
       {
@@ -375,13 +271,7 @@ const users = [
     ],
   },
   {
-    id: uuidv4(),
-    user: {
-      id: uuidv4(),
-      name: "Rachel Cooper",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Rachel Cooper",
-    },
-    location: "Toronto",
+    rating: 4.4,
     bio: "Language tutor helping students improve English and academic writing skills.",
     skills: [
       {

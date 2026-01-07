@@ -41,13 +41,6 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {/* <FormInput
-            variant="password"
-            placeholder={"Password"}
-            type="password"
-            value="{password}"
-            onChange="{(e) => setPassword(e.target.value)}"
-          /> */}
         </div>
         <div className="login__form-subheader">
           <p className="login__form-button-text">
