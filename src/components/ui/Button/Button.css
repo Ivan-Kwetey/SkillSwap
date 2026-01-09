@@ -7,6 +7,8 @@
   color: white;
   font-size: 15px;
   width: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
 .button--navbar {
@@ -100,14 +102,16 @@
 }
 
 .button--request-swap {
+  display: flex;
   padding: 14px 22px;
   border-radius: 50px;
   /* background-color: #111114; */
   font-size: 14px;
   font-weight: 500;
-  background-color: #0072E5;
+  background-color: #0072e5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
   width: 100%;
+  /* margin: 0 0 0 auto; */
 }
 
 .button--add-user {
@@ -127,7 +131,7 @@
   text-shadow: 0 0.5px 0.5px #3b3b3b;
 }
 
-.button--cancel-request{
+.button--cancel-request {
   padding: 14px 22px;
   border-radius: 50px;
   background-color: #ce3737;
@@ -135,4 +139,22 @@
   font-weight: 500;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
   width: 100%;
+}
+
+.button--ghost {
+  background-color: transparent;
+  color: #757575;
+  font-weight: 500;
+}
+
+.button--member {
+  margin: 0 0 0 auto;
+  display: flex;
+  padding: 14px 22px;
+  border-radius: 50px;
+  /* background-color: #111114; */
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #0072e5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
 }

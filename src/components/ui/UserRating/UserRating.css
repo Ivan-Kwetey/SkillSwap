@@ -8,4 +8,10 @@
   border-radius: 12px;
   display: flex;
   gap: 5px;
+  height: 21px;
+  align-items: center;
+}
+
+.user-rating--member{
+  background-color: transparent;
 }

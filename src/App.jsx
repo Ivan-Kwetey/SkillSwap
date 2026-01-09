@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/browse-skills" element={<BrowseSkills />} />
-        <Route path="/member" element={<MemberProfile/>} />
+        <Route path="/members/:id" element={<MemberProfile />} />
 
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>

@@ -1,6 +1,7 @@
 .member-profile {
   display: flex;
   justify-content: center;
+  padding: 50px 0;
 }
 
 .member-profile__content {
@@ -14,15 +15,29 @@
 }
 
 .member-profile__top,
-.member-profile__mid {
-  padding-bottom: 100px;
+.member-profile__mid,
+.member-profile__bottom {
+  padding-bottom: 50px;
+  width: 100%;
+}
+.member-profile__top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.member-profile__header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
 }
 
 .member-profile__page {
   max-width: 1460px;
   display: flex;
   justify-content: space-between;
-  background-color: aqua;
+  /* background-color: aqua; */
   width: 100%;
   padding: 0 50px;
   gap: 50px;
@@ -30,19 +45,112 @@
 }
 
 .member-profile__swap-title-container {
-    padding: 10px 0;
-    border-bottom: 2px solid black;
+  padding: 10px 0;
+  border-bottom: 2px solid black;
 }
 
-.member-profile__swap-title{
-    margin: 0;
-}
-.member-profile__swap-title{
-    font-size: 20px;
-    font-weight: 700;
+.member-profile__banner {
+  display: flex;
+  justify-content: space-between;
 }
 
-.member-profile__completed-banner{
-    display: flex;
-    justify-content: space-between;
+.member-profile__name-rating {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.member-profile__about {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.member-profile__about-text {
+  line-height: 25px;
+  font-size: 16px;
+  color: #525252;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.member-profile__section-title,
+.member-profile__section-title {
+  color: #505050;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.member-profile__section-subtitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.member-profile__mid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.member-profile__skill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.member-profile__skill-wants,
+.member-profile__skill-offer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 70px;
+}
+
+.member-profile__completed-swaps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  background-color: #eeeeee;
+  list-style-type: none;
+  border-radius: 5px;
+  font-weight: 500;
+  color: #414141;
+}
+
+.member-profile__completed-section,
+.member-profile__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.member-profile__social-links {
+  img {
+    width: 24px;
+    padding-right: 5px;
+  }
+}
+
+.member-profile__date-joined {
+  margin-top: 14px;
+  margin-bottom: 8px;
+  color: #737373;
+  font-size: 14px;
+}
+
+.member-profile__basic {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.member-profile__completed-item {
+  padding: 10px 5px;
+  border-bottom: 1px solid grey;
 }

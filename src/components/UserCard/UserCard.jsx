@@ -9,9 +9,11 @@ import { UserLink } from "../../assets/Images";
 import UserLocation from "../ui/UserLocation/UserLocation";
 import Button from "../ui/Button/Button";
 import { AddIcon } from "../../assets/Images";
+import { useNavigate } from "react-router-dom";
 
 const UserCard = ({ user, hasRequested, onRequest, onCancel }) => {
   const allModes = [...new Set(user.skills.flatMap((skill) => skill.modes))];
+    const navigate = useNavigate();
 
   return (
     <div className="skill-card">
@@ -30,8 +32,11 @@ const UserCard = ({ user, hasRequested, onRequest, onCancel }) => {
             <div className="skill-card__rating">
               <UserRating value={user.rating} />
             </div>
-            <div className="skill-card__link">
-              <img src={UserLink} alt="" />
+            <div
+              className="skill-card__link"
+              onClick={() => navigate(`/members/${user.id}`)}
+            >
+              <img src={UserLink} alt="View profile" />
             </div>
           </div>
           <div className="skill-card__user-info">

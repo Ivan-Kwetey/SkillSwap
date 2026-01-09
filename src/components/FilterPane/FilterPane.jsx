@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import "./FilterPane.css";
-import FilterButton from "../ui/FilterButton/Filterbutton";
+import FilterButton from "../ui/FilterButton/FilterButton";
 import Button from "../ui/Button/Button";
 
 const FilterPane = ({ skills = [], onApply }) => {
@@ -10,7 +10,7 @@ const FilterPane = ({ skills = [], onApply }) => {
     modes: [],
   });
 
-  // Unique categories from user.skills
+  // Unique skill categories
   const categories = useMemo(() => {
     const cats = skills.flatMap((user) =>
       user.skills?.map((skill) => skill.category).filter(Boolean) || []
@@ -18,12 +18,12 @@ const FilterPane = ({ skills = [], onApply }) => {
     return [...new Set(cats)];
   }, [skills]);
 
-  // Unique locations from user.location
+  // Unique locations
   const locations = useMemo(() => {
     return [...new Set(skills.map((user) => user.location).filter(Boolean))];
   }, [skills]);
 
-  // Unique modes from user.skills.modes
+  // Unique modes
   const modes = useMemo(() => {
     const allModes = skills.flatMap((user) =>
       user.skills?.flatMap((skill) => skill.modes?.filter(Boolean) || [])
@@ -31,6 +31,7 @@ const FilterPane = ({ skills = [], onApply }) => {
     return [...new Set(allModes)];
   }, [skills]);
 
+  // Toggle a filter option
   const toggleFilter = (key, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -97,7 +98,7 @@ const FilterPane = ({ skills = [], onApply }) => {
       {/* Mode */}
       <section className="filter-section">
         <h4 className="filter-titles">Mode</h4>
-        <div className="filter-options mode">
+        <div className="filter-options mode-filter">
           {modes.length > 0 ? (
             modes.map((mode, idx) => (
               <FilterButton
@@ -115,11 +116,7 @@ const FilterPane = ({ skills = [], onApply }) => {
 
       {/* Actions */}
       <div className="filter-actions">
-        <Button
-          variant="clear-filters"
-          onClick={handleClear}
-          text="Clear filters"
-        />
+        <Button variant="clear-filters" onClick={handleClear} text="Clear filters" />
         <Button variant="apply-filters" onClick={handleApply} text="Apply" />
       </div>
     </aside>
