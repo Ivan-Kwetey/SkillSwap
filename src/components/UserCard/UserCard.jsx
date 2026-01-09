@@ -50,7 +50,7 @@ const UserCard = ({ user, hasRequested, onRequest, onCancel }) => {
       <div className="skill-card__bottom">
         <div className="skill-card__bio">{user.bio}</div>
         <div className="skill-card__buttons">
-          <Button variant="add-user" text="Add" icon={AddIcon} />
+          {/* <Button variant="add-user" text="Add" icon={AddIcon} /> */}
           <Button
             text={hasRequested ? "Cancel request" : "Request swap"}
             onClick={hasRequested ? onCancel : onRequest}

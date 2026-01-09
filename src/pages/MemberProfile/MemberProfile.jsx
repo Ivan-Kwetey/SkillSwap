@@ -13,6 +13,7 @@ import Button from "../../components/ui/Button/Button";
 import { Facebook, Instagram, X } from "../../assets/Images";
 import { users } from "../../data/users";
 import { useMemberProfile } from "../../hooks/useMemberProfile";
+import MemberPane from "../../components/MemberPane/MemberPane";
 
 const MemberProfile = () => {
   const { id } = useParams();
@@ -27,7 +28,7 @@ const MemberProfile = () => {
   return (
     <div className="member-profile">
       <div className="member-profile__page">
-        <FilterPane />
+       <MemberPane />
 
         <div className="member-profile__content">
           {/* Top */}

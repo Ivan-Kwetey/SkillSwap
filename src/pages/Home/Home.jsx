@@ -1,10 +1,16 @@
 import React from "react";
 import Footer from "../../components/ui/Footer/Footer";
+import { ComingSoon } from "../../assets/Images";
+import "./Home.css"
 
 const Home = () => {
   return (
     <div className="home">
-      <Footer/>
+      <div className="home-page">
+        <img src={ComingSoon} alt="" />
+      </div>
+
+      <Footer />
     </div>
   );
 };

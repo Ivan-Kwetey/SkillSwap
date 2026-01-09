@@ -16,6 +16,10 @@ import Completed from "../assets/profilePane/completed.svg";
 import Star from "../assets/UserProfile/Star.svg";
 import UserLink from "../assets/UserProfile/UserLink.svg";
 import AddIcon from "../assets/UserProfile/add-icon.svg";
+import ComingSoon from "../assets/Feed/comingsoon.svg"
+import Feedback from "../assets/MemberPage/feedback.svg"
+import MemberRatingIcon from "../assets/MemberPage/rating.svg"
+import Message from "../assets/MemberPage/message.svg"
 
 export {
   Logo,
@@ -36,4 +40,8 @@ export {
   Star,
   UserLink,
   AddIcon,
+  ComingSoon,
+  Feedback,
+  Message,
+  MemberRatingIcon
 };
