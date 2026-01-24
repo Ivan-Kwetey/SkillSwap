@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   padding: 10px 134px;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
 }
 
 .navbar__items {
@@ -21,6 +21,10 @@
 .navbar__buttons {
   display: flex;
   gap: 14px;
+}
+
+.navbar__buttons a {
+  text-decoration: none;
 }
 
 .navbar__menu {

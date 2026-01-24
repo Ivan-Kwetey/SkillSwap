@@ -3,6 +3,7 @@ import Landing from "./pages/Landing/Landing";
 import Navbar from "./components/ui/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login.jsx";
+import Register from "./pages/Register/Register.jsx";
 import Home from "./pages/Home/Home.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import BrowseSkills from "./pages/BrowseSkills/BrowseSkills.jsx";
@@ -106,6 +107,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
         <Route
           path="/browse-skills"

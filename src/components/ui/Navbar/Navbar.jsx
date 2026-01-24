@@ -12,7 +12,6 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar__items">
-
         <div className="navbar__logo">
           <Link to="/landing">
             <img src={Logo} alt="SkillSwap Logo" />
@@ -26,7 +25,7 @@ const Navbar = () => {
               <Link to="/login">
                 <Button text="Sign in" variant="navbar" />
               </Link>
-              <Link to="/signup">
+              <Link to="/register">
                 <Button text="Register" variant="navbar" />
               </Link>
             </>
@@ -45,6 +44,5 @@ const Navbar = () => {
     </div>
   );
 };
-
 
 export default Navbar;

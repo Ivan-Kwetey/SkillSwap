@@ -49,11 +49,11 @@ export default function Login() {
           </p>
           <div className="login__form-buttons">
             <Button text="Sign in" variant="signin" type="submit" />
-            <Button
+            {/* <Button
               text="register"
               variant="register"
               onclick={() => navigate("/register")}
-            />
+            /> */}
           </div>
         </div>
       </form>
