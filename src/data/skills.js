@@ -27,7 +27,7 @@ const users = [
       "I’m a UX designer who believes great design starts with empathy. I specialize in translating complex ideas into intuitive user experiences for both web and mobile products. I enjoy collaborating with developers and product managers, and I often help teams improve usability, accessibility, and consistency through design systems.",
     dateJoined: "2025-01-03",
     skills: [
-      { name: "UX Design", category: "Design", modes: ["Online", "In-Person"] },
+      { name: "UX Design", category: "Design", modes: ["Online"] },
       { name: "Design Systems", category: "Design", modes: ["Online"] },
     ],
     wants: ["React.js", "User Research"],
@@ -77,7 +77,7 @@ const users = [
     dateJoined: "2024-12-01",
     skills: [
       { name: "Oil Painting", category: "Arts & Illustration", modes: ["In-Person"] },
-      { name: "Sketching Fundamentals", category: "Arts & Illustration", modes: ["Online"] },
+      { name: "Sketching Fundamentals", category: "Arts & Illustration", modes: ["In-Person"] },
     ],
     wants: ["Watercolor Techniques", "Figure Drawing"],
     completedSwaps: [
@@ -140,7 +140,7 @@ const users = [
       "I work as a video editor and motion graphics artist on short films, commercials, and online content. I enjoy teaching editing workflows, storytelling through motion, and efficient production techniques. My goal is to help creators elevate the quality of their video work.",
     dateJoined: "2025-04-12",
     skills: [
-      { name: "Video Editing", category: "Media & Production", modes: ["Online", "In-Person"] },
+      { name: "Video Editing", category: "Media & Production", modes: ["Online"] },
       { name: "Motion Graphics", category: "Media & Production", modes: ["Online"] },
     ],
     wants: ["3D Animation", "Color Grading"],

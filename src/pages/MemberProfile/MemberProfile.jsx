@@ -2,34 +2,57 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "./MemberProfile.css";
 import Avatar from "../../components/ui/Avatar/Avatar";
-import FilterPane from "../../components/FilterPane/FilterPane";
 import Profile from "../../components/Profile/Profile";
 import UserName from "../../components/ui/UserName/UserName";
 import UserLocation from "../../components/ui/UserLocation/UserLocation";
 import UserRating from "../../components/ui/UserRating/UserRating";
 import Tag from "../../components/ui/Tag/Tag";
 import Button from "../../components/ui/Button/Button";
-
 import { Facebook, Instagram, X } from "../../assets/Images";
 import { users } from "../../data/users";
-import { useMemberProfile } from "../../hooks/useMemberProfile";
 import MemberPane from "../../components/MemberPane/MemberPane";
 
-const MemberProfile = () => {
+const MemberProfile = ({
+  currentUserId,
+  requests,
+  sendRequest,
+  cancelRequest,
+  acceptRequest,
+  declineRequest,
+}) => {
   const { id } = useParams();
-  const user = users.find((u) => u.id === id);
-  const profile = useMemberProfile(user, id);
+  const profile = users.find((u) => u.id === id);
 
   if (!profile) return <div className="member-profile">User not found</div>;
+
   const offers = profile.offers ?? [];
   const wants = profile.wants ?? [];
   const completedSwaps = profile.completedSwaps ?? [];
+  const content = profile.content ?? [];
+
+  const sentRequest = requests.some(
+    (r) => r.fromUserId === currentUserId && r.toUserId === id,
+  );
+
+  const handleRequestClick = () => {
+    if (sentRequest) {
+      cancelRequest(id);
+    } else {
+      sendRequest(profile);
+    }
+  };
 
   return (
     <div className="member-profile">
       <div className="member-profile__page">
-       <MemberPane />
+        {/* Left: MemberPane */}
+        <MemberPane
+          sentRequest={sentRequest}
+          sentToName={profile.name}
+          onRequestClick={handleRequestClick}
+        />
 
+        {/* Center */}
         <div className="member-profile__content">
           {/* Top */}
           <div className="member-profile__top">
@@ -40,7 +63,7 @@ const MemberProfile = () => {
                   <UserName label={profile.name} variant="member" />
                   <UserRating value={profile.rating} variant="member" />
                 </div>
-                <UserLocation city={profile.location} variant="member"/>
+                <UserLocation city={profile.location} variant="member" />
                 {profile.dateJoined && (
                   <div className="member-profile__date-joined">
                     Joined {profile.dateJoined}
@@ -62,13 +85,12 @@ const MemberProfile = () => {
             </div>
           </div>
 
-          {/* Mid — Skill Swap */}
+          {/* Skill Swap */}
           <div className="member-profile__mid">
-            <h2 className="member-profile__section-title"> Skill Swap</h2>
-            <div className="member-profile__skill-info ">
+            <h2 className="member-profile__section-title">Skill Swap</h2>
+            <div className="member-profile__skill-info">
               <div className="member-profile__skill-offer">
                 <h4 className="member-profile__section-subtitle">Offers</h4>
-
                 <div>
                   {offers.length ? (
                     offers.map((skill) => (
@@ -79,6 +101,7 @@ const MemberProfile = () => {
                   )}
                 </div>
               </div>
+
               <div className="member-profile__skill-wants">
                 <h4 className="member-profile__section-subtitle">Wants</h4>
                 <div>
@@ -92,40 +115,39 @@ const MemberProfile = () => {
                 </div>
               </div>
             </div>
-
-            <div className="member-profile__completed-section">
-              <div className="member-profile__banner">
-                <h3 className="member-profile__section-subtitle">
-                  Recent swaps
-                </h3>
-                <Button variant="ghost" text="View all" />
-              </div>
-
-              <ul className="member-profile__completed-swaps">
-                {profile.completedSwaps?.length ? (
-                  profile.completedSwaps.map((s) => (
-                    <li key={s.id} className="member-profile__completed-item">
-                      {s.title} <span>completed {s.completedAt}</span>
-                    </li>
-                  ))
-                ) : (
-                  <li>No completed swaps yet</li>
-                )}
-              </ul>
-            </div>
-
-            <Button text="Request Swap" variant="member" />
           </div>
 
-          {/* Bottom — Videos */}
+          {/* Completed Swaps */}
+          <div className="member-profile__completed-section">
+            <div className="member-profile__banner">
+              <h3 className="member-profile__section-subtitle">Recent swaps</h3>
+              <Button variant="ghost" text="View all" />
+            </div>
+            <ul className="member-profile__completed-swaps">
+              {completedSwaps.length ? (
+                completedSwaps.map((s) => (
+                  <li key={s.id} className="member-profile__completed-item">
+                    <div className="member-profile__project-name">
+                      {s.title}
+                    </div>
+                    <span>completed on {s.completedAt}</span>
+                  </li>
+                ))
+              ) : (
+                <li>No completed swaps yet</li>
+              )}
+            </ul>
+          </div>
+
+          {/* Videos */}
           <div className="member-profile__bottom">
             <div className="member-profile__banner">
               <h2 className="member-profile__section-title">Videos</h2>
               <Button variant="ghost" text="View all" />
             </div>
             <div>
-              {profile.content
-                ?.filter((c) => c.type === "video")
+              {content
+                .filter((c) => c.type === "video")
                 .map((v) => <div key={v.id}>{v.title}</div>) || (
                 <div>No videos shared yet</div>
               )}
@@ -133,7 +155,14 @@ const MemberProfile = () => {
           </div>
         </div>
 
-        <Profile />
+        {/* Right Side Profile Pane */}
+        <Profile
+          currentUserId={currentUserId}
+          requests={requests}
+          onCancelRequest={cancelRequest}
+          onAcceptRequest={acceptRequest}
+          onDeclineRequest={declineRequest}
+        />
       </div>
     </div>
   );

@@ -8,11 +8,6 @@
   overflow: hidden;
 }
 
-.skill-card__top {
-  /* background-color: black; */
-  /* object-fit: contain; */
-}
-
 .skill-card__overlay {
   height: 200px;
   padding: 10px 15px 20px 15px;
@@ -23,22 +18,21 @@
 }
 
 .skill-card__overlay {
-  position: relative; /* REQUIRED for overlay */
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Darkening layer */
+
 .skill-card__overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* 👈 darkness level */
+  background: rgba(0, 0, 0, 0.45);
   z-index: 0;
 }
 
-/* Ensure text/content stays above overlay */
 .skill-card__overlay > * {
   position: relative;
   z-index: 1;

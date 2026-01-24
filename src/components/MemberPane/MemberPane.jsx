@@ -1,16 +1,27 @@
 import React from "react";
 import "./MemberPane.css";
 import { Feedback, MemberRatingIcon, Message } from "../../assets/Images";
+import Button from "../ui/Button/Button";
 
-const MemberPane = () => {
+const MemberPane = ({ sentRequest, sentToName, onRequestClick }) => {
   return (
     <div className="member-pane">
       <div className="member-pane__info">
         <h1 className="member-pane__last-seen">Last seen: A week ago</h1>
         <p className="member-pane__swap-status">
-          You currently do not share any Skill swap, request swap to start
-          learning
+          {sentRequest
+            ? `You sent a request for a skill swap to ${sentToName}`
+            : "You currently do not share any Skill swap, request swap to start learning"}
         </p>
+
+        {/* Request / Cancel button */}
+        <div className="member-pane__request-btn">
+          <Button
+            text={sentRequest ? "Cancel Request" : "Request Swap"}
+            variant="member"
+            onClick={onRequestClick}
+          />
+        </div>
       </div>
 
       <div className="member-pane__items">

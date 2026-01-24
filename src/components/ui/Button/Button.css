@@ -101,6 +101,22 @@
   font-weight: 500;
 }
 
+.button--cancel-request-pane,
+.button--accept-request,
+.button--decline-request {
+  width: fit-content;
+  background-color: #ce3737;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+.button--accept-request {
+  width: 100%;
+  background-color: #0072e5;
+}
+
+.button--decline-request {
+  width: 100%;
+}
 .button--request-swap {
   display: flex;
   padding: 14px 22px;
@@ -157,4 +173,5 @@
   font-weight: 500;
   background-color: #0072e5;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
+  width: 100%;
 }

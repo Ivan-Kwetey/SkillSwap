@@ -1,6 +1,6 @@
 .browse-skills {
   position: relative;
-  /* height: 100vh; */
+  height: fit-content;
   /* overflow: hidden; */
 }
 
@@ -31,7 +31,7 @@
 .browse-layout {
   display: flex;
   height: 100%;
-  padding: 50px 134px 0 134px;
+  padding: 50px 134px 50px 134px;
   justify-content: space-between;
   max-width: 1456px;
   justify-self: center;
@@ -79,6 +79,7 @@
   justify-content: center;
   gap: 0.5rem;
   margin: 2rem 0;
+
 }
 
 .pagination__btn {
@@ -98,6 +99,7 @@
   background: #000;
   color: #fff;
   border-color: #000;
+  
 }
 
 .pagination__btn:disabled {

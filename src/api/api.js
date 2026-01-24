@@ -7,7 +7,8 @@ export const fetchUsers = (count = 12) => {
       if (!res.ok) {
         throw new Error("Failed to fetch users");
       }
-      return res.json(); //first then returns res.json
+      //first then returns res.json
+      return res.json();
     })
     .then((data) => {
       return data.results;

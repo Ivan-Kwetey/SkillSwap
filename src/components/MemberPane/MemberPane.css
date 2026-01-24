@@ -1,5 +1,6 @@
 .member-pane {
-  width: 250px;
+  max-width: 250px;
+  width: 100%;
   height: fit-content;
   background-color: #0f0f0f;
   padding: 15px 0;
@@ -55,16 +56,21 @@
 
 .member-pane__info {
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .member-pane__last-seen {
   color: #a1a1a1;
   font-size: 16px;
   font-weight: 500;
+  margin: 0;
 }
 
 .member-pane__swap-status {
   color: #a1a1a1;
   font-size: 14px;
   font-weight: 400;
+  margin: 0;
 }

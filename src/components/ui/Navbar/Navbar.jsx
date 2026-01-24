@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar__items">
-        {/* Logo always exists */}
+
         <div className="navbar__logo">
           <Link to="/landing">
             <img src={Logo} alt="SkillSwap Logo" />

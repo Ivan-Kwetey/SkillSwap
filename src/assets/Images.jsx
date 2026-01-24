@@ -12,6 +12,7 @@ import DropdownIcon from "../assets/search/DropdownIcon.svg";
 import ActiveExchange from "../assets/profilePane/activeExchange.svg";
 import ManageSkills from "../assets/profilePane/manageSkills.svg";
 import PendingRequests from "../assets/profilePane/request.svg";
+import OutgoingRequests from "../assets/profilePane/request2.svg";
 import Completed from "../assets/profilePane/completed.svg";
 import Star from "../assets/UserProfile/Star.svg";
 import UserLink from "../assets/UserProfile/UserLink.svg";
@@ -43,5 +44,6 @@ export {
   ComingSoon,
   Feedback,
   Message,
-  MemberRatingIcon
+  MemberRatingIcon,
+  OutgoingRequests
 };

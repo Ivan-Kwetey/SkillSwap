@@ -4,9 +4,8 @@
 }
 
 .highlights {
-  /* padding: 0 134px; */
   overflow: hidden;
-  /* overflow-x: auto; */
+
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
@@ -17,16 +16,16 @@
 
 .highlights__track {
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE / Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .highlights__track::-webkit-scrollbar {
-  display: none; /* Chrome / Safari */
+  display: none;
 }
 
 .highlights::-webkit-scrollbar {
-  display: none; /* Chrome / Safari */
+  display: none;
 }
 
 .highlights__track {

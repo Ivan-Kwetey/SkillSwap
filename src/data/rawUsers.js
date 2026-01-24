@@ -1,4 +1,3 @@
-// src/data/rawUsers.js
 const rawUsers = [
   {
     login: { uuid: "user-1" },
