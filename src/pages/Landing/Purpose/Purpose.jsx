@@ -1,5 +1,5 @@
 import React from "react";
-import "./purpose.css";
+import "./Purpose.css";
 import { purposeContent } from "../../../data/purposeContent";
 
 const Purpose = () => {
