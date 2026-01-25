@@ -10,6 +10,7 @@ This repository currently focuses on the **frontend MVP**, designed to validate 
 
 **Give a skill. Get a skill.**  
 SkillSwap enables people to:
+
 - Offer skills they already have
 - Request skills they want to learn
 - Connect through simple, intentional exchanges
@@ -59,6 +60,7 @@ To mimic real-world behavior in a frontend-only environment, SkillSwap uses:
 - **Optimistic UI patterns** (actions feel instant, even if simulated)
 
 This approach allows us to test:
+
 - Core flows
 - UX clarity
 - Information hierarchy
@@ -69,21 +71,25 @@ This approach allows us to test:
 ## Core Features
 
 ### 1. Browse Skills
+
 - Grid/list of user cards
 - Skill tags with clear offerings and wants
 - Ratings and short bios for quick scanning
 
 ### 2. Profile View
+
 - Expanded bio and skill details
 - Skills offered vs skills requested
 - Call-to-action for sending a swap request
 
 ### 3. Skill Swap Request Flow
+
 - Clear entry point ("Request Swap")
 - Confirmation feedback
 - Disabled repeat actions once a request is sent
 
 ### 4. Filtering & Search
+
 - Search by skill name
 - Filter by offered or wanted skills
 - Fast, responsive UI updates
@@ -95,18 +101,22 @@ This approach allows us to test:
 SkillSwap’s frontend MVP integrates lightweight public APIs to simulate realistic, production-like behavior without a full backend.
 
 ### Random User API — Profile Generation
+
 We use the **Random User API** to dynamically generate realistic user profiles.
 
 This API provides:
+
 - Real human profile photos
 - Names
 - Location data
 
 Example usage:
+
 - Fetching multiple users at once
 - Mapping API responses into SkillSwap’s internal user model
 
 **Why this decision**
+
 - Profiles feel immediately human and trustworthy
 - Avoids abstract placeholders or avatars
 - Simulates real social-product constraints
@@ -117,19 +127,23 @@ The frontend treats this API as if it were a real user service, making it easy t
 ---
 
 ### JSONPlaceholder — Simulated Skill Swap Requests
+
 To simulate sending and canceling skill swap requests, we use **JSONPlaceholder**, a fake online REST API.
 
 Used for:
+
 - Sending a skill swap request (POST)
 - Canceling a request (DELETE)
 
 **Why JSONPlaceholder**
+
 - Mimics real network behavior
 - Supports realistic request/response flows
 - Allows optimistic UI patterns
 - No backend setup required
 
 This enables us to design and validate request states such as:
+
 - Pending
 - Success
 - Disabled repeat actions
@@ -137,7 +151,9 @@ This enables us to design and validate request states such as:
 ---
 
 ### Frontend-First Architecture
+
 All API interactions are abstracted behind service functions, allowing:
+
 - Easy replacement with a real backend
 - Clear separation of concerns
 - Scalable architecture beyond the MVP
@@ -175,6 +191,7 @@ All API interactions are abstracted behind service functions, allowing:
 ## Why Frontend-Only?
 
 This MVP is intentionally frontend-focused to:
+
 - Iterate fast
 - Validate UX decisions early
 - Avoid premature backend complexity
@@ -214,5 +231,6 @@ MIT License
 
 ---
 
-SkillSwap — Learn together. Grow together.
+## Link ( https://skillswap-frontend-api.vercel.app )
 
+SkillSwap — Learn together. Grow together.

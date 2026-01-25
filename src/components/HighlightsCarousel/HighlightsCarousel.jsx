@@ -1,5 +1,5 @@
 import React from "react";
-import { highlights } from "../../data/Highlights";
+import { highlights } from "../../data/highlights";
 import HighlightCard from "../HighlightCard/HighlightCard";
 import "./HighlightsCarousel.css";
 

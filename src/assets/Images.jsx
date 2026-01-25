@@ -8,7 +8,7 @@ import FullLogo from "../assets/footer/fullLogo.svg";
 import ScrollUp from "../assets/footer/scrollUp.svg";
 import BrowseGraphic from "../assets/browse/browseSkillGraphic.png";
 import SearchIcon from "../assets/search/searchIcon.svg";
-import DropdownIcon from "../assets/search/DropdownIcon.svg";
+import DropdownIcon from "../assets/search/dropdownIcon.svg";
 import ActiveExchange from "../assets/profilePane/activeExchange.svg";
 import ManageSkills from "../assets/profilePane/manageSkills.svg";
 import PendingRequests from "../assets/profilePane/request.svg";
