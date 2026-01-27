@@ -35,7 +35,7 @@
 }
 
 .category-filter {
-  height: 120px;
+  height: fit-content;
   overflow: scroll;
 }
 

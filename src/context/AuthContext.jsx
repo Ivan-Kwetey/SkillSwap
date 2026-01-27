@@ -6,7 +6,14 @@ const AuthContext = createContext();
 // Provider wraps the app and gives access to auth state
 export const AuthProvider = ({ children }) => {
   // Initialize user from localStorage (persist login)
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+const [user, setUser] = useState(() => {
+  try {
+    return JSON.parse(localStorage.getItem("user")) || null;
+  } catch {
+    return null;
+  }
+});
+
 
   // Simulate login
   const login = (email) => {

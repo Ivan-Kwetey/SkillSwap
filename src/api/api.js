@@ -19,18 +19,21 @@ export const fetchUsers = (count = 12) => {
     });
 };
 
-// Simulate sending a skill request
 export const sendRequest = (userId) => {
   return fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId }),
-  })
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error("Failed to send request:", err);
-      throw err;
-    });
+    body: JSON.stringify({
+      userId,
+      status: "pending",
+      createdAt: new Date().toISOString(),
+    }),
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error("Request failed");
+    }
+    return res.json();
+  });
 };
 
 // Simulate canceling a skill request

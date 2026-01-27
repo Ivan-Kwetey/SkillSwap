@@ -37,9 +37,12 @@ export default function Register() {
         <div className="register__form-input">
           <FormInput
             variant="username"
-            placeholder={"Email or Username"}
+            placeholder="Email or Username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            id="email"
+            className="register__form-input-field"
           />
         </div>
         <div className="register__form-subheader">

@@ -5,11 +5,11 @@ import UserCard from "../../components/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
 import Footer from "../../components/ui/Footer/Footer";
 import SearchBar from "../../components/ui/SearchBar/SearchBar";
-import { users } from "../../data/users";
 
 const ITEMS_PER_PAGE = 4;
 
 const BrowseSkills = ({
+  users,
   currentUserId,
   requests,
   sendRequest,
@@ -17,13 +17,18 @@ const BrowseSkills = ({
   acceptRequest,
   declineRequest,
 }) => {
+  useEffect(() => {
+    if (!users?.length) return;
+
+    const others = users.filter((u) => u.id !== currentUserId);
+    setAllSkills(others);
+    setFilteredSkills(others);
+    setCurrentPage(1);
+  }, [users, currentUserId]);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [allSkills, setAllSkills] = useState(() =>
-    users.filter((u) => u.id !== currentUserId),
-  );
-  const [filteredSkills, setFilteredSkills] = useState(() =>
-    users.filter((u) => u.id !== currentUserId),
-  );
+  const [allSkills, setAllSkills] = useState([]);
+  const [filteredSkills, setFilteredSkills] = useState([]);
 
   const totalPages = Math.ceil(filteredSkills.length / ITEMS_PER_PAGE);
 
@@ -95,20 +100,25 @@ const BrowseSkills = ({
 
         <main className="main-content">
           <div className="skill-cards">
-            {currentUsers.map((user) => {
-              const hasRequested = requests.some(
-                (r) => r.fromUserId === currentUserId && r.toUserId === user.id,
-              );
-              return (
-                <UserCard
-                  key={user.id}
-                  user={user}
-                  hasRequested={hasRequested}
-                  onRequest={() => sendRequest(user)}
-                  onCancel={() => cancelRequest(user.id)}
-                />
-              );
-            })}
+            {currentUsers.length === 0 ? (
+              <p>No users match your filters.</p>
+            ) : (
+              currentUsers.map((user) => {
+                const hasRequested = requests.some(
+                  (r) =>
+                    r.fromUserId === currentUserId && r.toUserId === user.id,
+                );
+                return (
+                  <UserCard
+                    key={user.id}
+                    user={user}
+                    hasRequested={hasRequested}
+                    onRequest={() => sendRequest(user)}
+                    onCancel={() => cancelRequest(user.id)}
+                  />
+                );
+              })
+            )}
           </div>
 
           {totalPages > 1 && (

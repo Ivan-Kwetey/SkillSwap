@@ -38,22 +38,9 @@
   letter-spacing: -2;
 }
 
-/* .mission__title {
-  color: white;
-  font-size: 64px;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.1;
-
-  max-width: 14ch;
-  margin: 0 auto;
-  overflow-wrap: anywhere;
-} */
-
 .mission__subtitle {
   text-align: center;
   color: #bebebe;
   font-weight: 400;
   font-size: 22px;
-  /* letter-spacing: -1px; */
 }

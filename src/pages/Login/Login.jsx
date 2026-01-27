@@ -11,6 +11,8 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  
+
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("login attempted");
@@ -37,9 +39,12 @@ export default function Login() {
         <div className="login__form-input">
           <FormInput
             variant="username"
-            placeholder={"Email or Username"}
+            placeholder="Email or Username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            id="email"
+            className="login__form-input-field"
           />
         </div>
         <div className="login__form-subheader">
@@ -49,11 +54,6 @@ export default function Login() {
           </p>
           <div className="login__form-buttons">
             <Button text="Sign in" variant="signin" type="submit" />
-            {/* <Button
-              text="register"
-              variant="register"
-              onclick={() => navigate("/register")}
-            /> */}
           </div>
         </div>
       </form>

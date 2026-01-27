@@ -1,22 +1,23 @@
-import React from "react";
-import "./FormInput.css";
-
-const FormInput = ({
+export default function FormInput({
   value,
   onChange,
-  variant,
   placeholder,
+  id,
+  name,
   type = "text",
-}) => {
+  autoComplete,
+  className 
+}) {
   return (
     <input
-      className={`form-input form-input--${variant}`}
       type={type}
-      placeholder={placeholder}
+      id={id}
+      name={name}
       value={value}
       onChange={onChange}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
+      className={className}
     />
   );
-};
-
-export default FormInput;
+}

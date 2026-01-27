@@ -1,8 +1,8 @@
-FormInput{
+FormInput {
   color: #737373;
 }
 
-.login{
+.login {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ FormInput{
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  gap: 40px;
+  gap: 30px;
   max-width: 312px;
   width: 100%;
   padding: 100px 0;
@@ -45,7 +45,7 @@ FormInput{
 }
 
 .login__form-button-text {
-  font-size: 10px;
+  font-size: 12px;
   font: 500;
   color: #737277;
 }
@@ -56,13 +56,20 @@ FormInput{
   gap: 20px;
   width: 100%;
 }
-
-/* //input form buttons */
+.login__form-input-field {
+  border-radius: 50px;
+  background-color: transparent;
+  color: #1d1d1d;
+  font-size: 16px;
+  padding: 10px 10px;
+}
 
 .login__form-buttons {
   width: 100%;
   display: flex;
   gap: 10px;
+
+  background-color: aqua;
 }
 
 .login__form-subheader {

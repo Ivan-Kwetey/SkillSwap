@@ -9,10 +9,11 @@ import UserRating from "../../components/ui/UserRating/UserRating";
 import Tag from "../../components/ui/Tag/Tag";
 import Button from "../../components/ui/Button/Button";
 import { Facebook, Instagram, X } from "../../assets/Images";
-import { users } from "../../data/users";
 import MemberPane from "../../components/MemberPane/MemberPane";
+import { useMemberProfile } from "../../hooks/useMemberProfile";
 
 const MemberProfile = ({
+  users,
   currentUserId,
   requests,
   sendRequest,
@@ -21,12 +22,16 @@ const MemberProfile = ({
   declineRequest,
 }) => {
   const { id } = useParams();
-  const profile = users.find((u) => u.id === id);
+  const profile = users?.find((u) => u.id === id);
+  if (!users?.length) return <div style={{ padding: 24 }}>Loading user...</div>;
+  if (!profile) return <div className="member-profile">User not found</div>;
 
   if (!profile) return <div className="member-profile">User not found</div>;
 
-  const offers = profile.offers ?? [];
-  const wants = profile.wants ?? [];
+
+
+const { offers, wants } = useMemberProfile(profile);
+
   const completedSwaps = profile.completedSwaps ?? [];
   const content = profile.content ?? [];
 

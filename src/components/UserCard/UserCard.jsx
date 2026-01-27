@@ -12,7 +12,7 @@ import { AddIcon } from "../../assets/Images";
 import { useNavigate } from "react-router-dom";
 
 const UserCard = ({ user, hasRequested, onRequest, onCancel }) => {
-  const allModes = [...new Set(user.skills.flatMap((skill) => skill.modes))];
+  // const allModes = [...new Set(user.skills.flatMap((skill) => skill.modes))];
     const navigate = useNavigate();
 
   return (

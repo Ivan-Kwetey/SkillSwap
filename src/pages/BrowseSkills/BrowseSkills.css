@@ -11,20 +11,6 @@
   padding: 15px 500px;
   background-color: #e0e0e0;
 
-  /* Frosted glass base */
-  /* background: rgba(198, 198, 198, 0.623);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); */
-
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
-
-  /* Subtle shine */
-  /* box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6); */
-
-  /* Glass border */
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
-
   z-index: 10;
 }
 
@@ -36,15 +22,7 @@
   max-width: 1456px;
   justify-self: center;
   width: 100%;
-  /* background-color: beige; */
 }
-
-/* .left-sidebar {
-  width: 100%;
-  padding: 20px 0;
-  border-right: 1px solid #e0e0e0;
-  overflow-y: auto;
-  /* padding-top: 100px; */
 
 .main-content {
   overflow-y: auto;
@@ -58,7 +36,6 @@
 }
 
 .right-sidebar {
-  /* width: 100%; */
   padding: 20px 0;
   border-left: 1px solid #e0e0e0;
   overflow-y: auto;
