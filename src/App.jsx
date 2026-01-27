@@ -11,66 +11,20 @@ import MemberProfile from "./pages/MemberProfile/MemberProfile.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 import {
-  fetchUsers,
   sendRequest as sendRequestApi,
   cancelRequest as cancelRequestApi,
 } from "./api/api";
 
+import { useUsers } from "./context/UsersContext.jsx";
+
 const App = () => {
-  /* for users*/
-  const [users, setUsers] = useState([]);
-  const [loadingUsers, setLoadingUsers] = useState(true);
-
-  useEffect(() => {
-    fetchUsers(12)
-      .then((data) => {
-        const normalized = data.map((u, index) => ({
-          id: `user-${index + 1}`,
-          name: `${u.name.first} ${u.name.last}`,
-          avatar: u.picture.medium,
-          location: u.location.country,
-          rating: (Math.random() * 2 + 3).toFixed(1),
-          skills:
-            index % 3 === 0
-              ? [
-                  {
-                    name: "UI/UX Design",
-                    category: "Design",
-                    modes: ["remote"],
-                  },
-                ]
-              : index % 3 === 1
-                ? [
-                    {
-                      name: "JavaScript",
-                      category: "Programming",
-                      modes: ["remote"],
-                    },
-                  ]
-                : [
-                    {
-                      name: "Python",
-                      category: "Programming",
-                      modes: ["in-person"],
-                    },
-                    {
-                      name: "Illustration",
-                      category: "Design",
-                      modes: ["remote"],
-                    },
-                  ],
-        }));
-
-        setUsers(normalized);
-      })
-      .catch(console.error)
-      .finally(() => setLoadingUsers(false));
-  }, []);
+  // Get users from context
+  const { users } = useUsers();
 
   const currentUserId = users[0]?.id || null;
   const currentUserName = users[0]?.name || "You";
 
-  /* for request */
+  /* Skill swap requests */
   const [requests, setRequests] = useState(() => {
     const saved = localStorage.getItem("skillSwapRequests");
     return saved ? JSON.parse(saved) : [];
@@ -80,9 +34,10 @@ const App = () => {
     localStorage.setItem("skillSwapRequests", JSON.stringify(requests));
   }, [requests]);
 
-  /* for actions*/
+  /* Actions */
   const sendRequest = async (toUser) => {
     if (!currentUserId) return;
+
     if (
       requests.some(
         (r) => r.fromUserId === currentUserId && r.toUserId === toUser.id,
@@ -147,55 +102,48 @@ const App = () => {
     );
   };
 
-  /* the routes */
+  /* Routes */
   return (
     <>
       <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      {loadingUsers ? (
-        <div style={{ padding: 24 }}>Loading users...</div>
-      ) : (
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/landing" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+        <Route
+          path="/browse-skills"
+          element={
+            <BrowseSkills
+              currentUserId={currentUserId}
+              requests={requests}
+              sendRequest={sendRequest}
+              cancelRequest={cancelRequest}
+              acceptRequest={acceptRequest}
+              declineRequest={declineRequest}
+            />
+          }
+        />
 
-          <Route
-            path="/browse-skills"
-            element={
-              <BrowseSkills
-                users={users}
-                currentUserId={currentUserId}
-                requests={requests}
-                sendRequest={sendRequest}
-                cancelRequest={cancelRequest}
-                acceptRequest={acceptRequest}
-                declineRequest={declineRequest}
-              />
-            }
-          />
+        <Route
+          path="/members/:id"
+          element={
+            <MemberProfile
+              currentUserId={currentUserId}
+              requests={requests}
+              sendRequest={sendRequest}
+              cancelRequest={cancelRequest}
+              acceptRequest={acceptRequest}
+              declineRequest={declineRequest}
+            />
+          }
+        />
 
-          <Route
-            path="/members/:id"
-            element={
-              <MemberProfile
-                users={users}
-                currentUserId={currentUserId}
-                requests={requests}
-                sendRequest={sendRequest}
-                cancelRequest={cancelRequest}
-                acceptRequest={acceptRequest}
-                declineRequest={declineRequest}
-              />
-            }
-          />
-
-          <Route element={<ProtectedRoute />}>
-            <Route path="/home" element={<Home />} />
-          </Route>
-        </Routes>
-      )}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+        </Route>
+      </Routes>
     </>
   );
 };

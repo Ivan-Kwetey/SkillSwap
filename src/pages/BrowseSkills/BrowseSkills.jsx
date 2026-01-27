@@ -5,11 +5,11 @@ import UserCard from "../../components/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
 import Footer from "../../components/ui/Footer/Footer";
 import SearchBar from "../../components/ui/SearchBar/SearchBar";
+import { useUsers } from "../../context/UsersContext.jsx";
 
 const ITEMS_PER_PAGE = 4;
 
 const BrowseSkills = ({
-  users,
   currentUserId,
   requests,
   sendRequest,
@@ -17,18 +17,21 @@ const BrowseSkills = ({
   acceptRequest,
   declineRequest,
 }) => {
+  const { users, loadingUsers } = useUsers(); 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [allSkills, setAllSkills] = useState([]);
+  const [filteredSkills, setFilteredSkills] = useState([]);
+
+  // update allSkills when users load
   useEffect(() => {
-    if (!users?.length) return;
+    if (loadingUsers || !users?.length) return;
 
     const others = users.filter((u) => u.id !== currentUserId);
     setAllSkills(others);
     setFilteredSkills(others);
     setCurrentPage(1);
-  }, [users, currentUserId]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [allSkills, setAllSkills] = useState([]);
-  const [filteredSkills, setFilteredSkills] = useState([]);
+  }, [users, loadingUsers, currentUserId]);
 
   const totalPages = Math.ceil(filteredSkills.length / ITEMS_PER_PAGE);
 
@@ -81,6 +84,8 @@ const BrowseSkills = ({
       }),
     );
   };
+
+  if (loadingUsers) return <div style={{ padding: 24 }}>Loading users...</div>;
 
   const sentRequestsCount = requests.filter(
     (r) => r.fromUserId === currentUserId,

@@ -11,9 +11,9 @@ import Button from "../../components/ui/Button/Button";
 import { Facebook, Instagram, X } from "../../assets/Images";
 import MemberPane from "../../components/MemberPane/MemberPane";
 import { useMemberProfile } from "../../hooks/useMemberProfile";
+import { useUsers } from "../../context/UsersContext.jsx"; 
 
 const MemberProfile = ({
-  users,
   currentUserId,
   requests,
   sendRequest,
@@ -22,16 +22,19 @@ const MemberProfile = ({
   declineRequest,
 }) => {
   const { id } = useParams();
-  const profile = users?.find((u) => u.id === id);
-  if (!users?.length) return <div style={{ padding: 24 }}>Loading user...</div>;
-  if (!profile) return <div className="member-profile">User not found</div>;
+
+
+  const { users, loadingUsers } = useUsers();
+
+  // loading until users are fetched
+  if (loadingUsers) return <div style={{ padding: 24 }}>Loading user...</div>;
+
+  // find the profile by id
+  const profile = users.find((u) => u.id === id);
 
   if (!profile) return <div className="member-profile">User not found</div>;
 
-
-
-const { offers, wants } = useMemberProfile(profile);
-
+  const { offers, wants } = useMemberProfile(profile);
   const completedSwaps = profile.completedSwaps ?? [];
   const content = profile.content ?? [];
 
@@ -50,14 +53,13 @@ const { offers, wants } = useMemberProfile(profile);
   return (
     <div className="member-profile">
       <div className="member-profile__page">
-        {/* Left: MemberPane */}
         <MemberPane
           sentRequest={sentRequest}
           sentToName={profile.name}
           onRequestClick={handleRequestClick}
         />
 
-        {/* Center */}
+        {/* mid*/}
         <div className="member-profile__content">
           {/* Top */}
           <div className="member-profile__top">
@@ -132,9 +134,7 @@ const { offers, wants } = useMemberProfile(profile);
               {completedSwaps.length ? (
                 completedSwaps.map((s) => (
                   <li key={s.id} className="member-profile__completed-item">
-                    <div className="member-profile__project-name">
-                      {s.title}
-                    </div>
+                    <div className="member-profile__project-name">{s.title}</div>
                     <span>completed on {s.completedAt}</span>
                   </li>
                 ))
@@ -151,16 +151,18 @@ const { offers, wants } = useMemberProfile(profile);
               <Button variant="ghost" text="View all" />
             </div>
             <div>
-              {content
-                .filter((c) => c.type === "video")
-                .map((v) => <div key={v.id}>{v.title}</div>) || (
+              {content.filter((c) => c.type === "video").length ? (
+                content
+                  .filter((c) => c.type === "video")
+                  .map((v) => <div key={v.id}>{v.title}</div>)
+              ) : (
                 <div>No videos shared yet</div>
               )}
             </div>
           </div>
         </div>
 
-        {/* Right Side Profile Pane */}
+        {/* profile-pane */}
         <Profile
           currentUserId={currentUserId}
           requests={requests}
