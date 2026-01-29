@@ -4,10 +4,10 @@ import Button from "../Button/Button";
 import { useAuth } from "../../../context/AuthContext";
 import { Logo } from "../../../assets/Images";
 import "./Navbar.css";
+import Avatar from "../Avatar/Avatar";
 
-const Navbar = () => {
-  const { user, logout } = useAuth();
-  const location = useLocation();
+const Navbar = ({ onAvatarClick }) => {
+  const { user } = useAuth();
 
   return (
     <div className="navbar">
@@ -18,7 +18,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Menu */}
         <div className="navbar__buttons">
           {!user ? (
             <>
@@ -37,6 +36,14 @@ const Navbar = () => {
               <Link to="/browse-skills">
                 <Button text="Browse Skills" variant="navbar" />
               </Link>
+
+              <div className="navbar__avatar" onClick={onAvatarClick}>
+                <Avatar
+                  src={user.avatarUrl} 
+                  alt={user.name}
+                  variant="navbar" 
+                />
+              </div>
             </>
           )}
         </div>

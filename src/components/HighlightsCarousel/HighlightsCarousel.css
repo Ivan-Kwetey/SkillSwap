@@ -1,6 +1,10 @@
 .highlights__track {
   display: flex;
   gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
 }
 
 .highlights {
@@ -13,23 +17,12 @@
   width: 100%;
   max-width: 1460px;
 }
-
-.highlights__track {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
 .highlights__track::-webkit-scrollbar {
   display: none;
 }
 
 .highlights::-webkit-scrollbar {
   display: none;
-}
-
-.highlights__track {
-  scroll-snap-type: x mandatory;
 }
 
 .highlight-card {

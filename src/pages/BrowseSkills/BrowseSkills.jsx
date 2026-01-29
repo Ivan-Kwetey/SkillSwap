@@ -3,9 +3,10 @@ import "./BrowseSkills.css";
 import Profile from "../../components/Profile/Profile";
 import UserCard from "../../components/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
-import Footer from "../../components/ui/Footer/Footer";
 import SearchBar from "../../components/ui/SearchBar/SearchBar";
 import { useUsers } from "../../context/UsersContext.jsx";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
+import Button from "../../components/ui/Button/Button.jsx";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -17,7 +18,9 @@ const BrowseSkills = ({
   acceptRequest,
   declineRequest,
 }) => {
-  const { users, loadingUsers } = useUsers(); 
+  const { users, loadingUsers } = useUsers();
+  const isDesktop = useIsDesktop(1330);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [allSkills, setAllSkills] = useState([]);
@@ -101,9 +104,33 @@ const BrowseSkills = ({
       </div>
 
       <div className="browse-layout">
-        <FilterPane skills={allSkills} onApply={handleApplyFilters} />
+        
+        {isDesktop && (
+          <FilterPane skills={allSkills} onApply={handleApplyFilters} />
+        )}
+
+        {/* slide-in panel */}
+        {!isDesktop && (
+          <FilterPane
+            skills={allSkills}
+            onApply={(filters) => {
+              handleApplyFilters(filters);
+              setIsFilterOpen(false);
+            }}
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(false)}
+          />
+        )}
 
         <main className="main-content">
+          <div className="browse-layout__filter-trigger">
+            <Button
+              variant="filter-trigger-btn"
+              onClick={() => setIsFilterOpen(true)}
+              text="Filters"
+            />
+          </div>
+
           <div className="skill-cards">
             {currentUsers.length === 0 ? (
               <p>No users match your filters.</p>
@@ -162,16 +189,16 @@ const BrowseSkills = ({
           )}
         </main>
 
-        <Profile
-          currentUserId={currentUserId}
-          requests={requests}
-          onCancelRequest={cancelRequest}
-          onAcceptRequest={acceptRequest}
-          onDeclineRequest={declineRequest}
-        />
+        {isDesktop && (
+          <Profile
+            currentUserId={currentUserId}
+            requests={requests}
+            onCancelRequest={cancelRequest}
+            onAcceptRequest={acceptRequest}
+            onDeclineRequest={declineRequest}
+          />
+        )}
       </div>
-
-      <Footer />
     </div>
   );
 };

@@ -1,15 +1,20 @@
 .home {
-  .register {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .home-page {
-  display: flex;
   justify-content: center;
+  height: 100%;
   align-items: center;
-  padding: 100px 0;
+  background-color: rgb(234, 230, 230);
+  display: flex;
+  padding: clamp(2px, 6vw, 300px);
+}
+
+.coming-soon-img {
+  width: clamp(100px, 100vw, 600px);
+  height: auto;
 }

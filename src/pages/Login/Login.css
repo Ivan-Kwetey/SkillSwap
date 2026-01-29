@@ -25,6 +25,7 @@ FormInput {
   flex-direction: column;
   text-align: center;
   margin: 0;
+
   gap: 20px;
 }
 
@@ -68,8 +69,6 @@ FormInput {
   width: 100%;
   display: flex;
   gap: 10px;
-
-  background-color: aqua;
 }
 
 .login__form-subheader {
@@ -77,4 +76,14 @@ FormInput {
   flex-direction: column;
   gap: 20px;
   width: 100%;
+}
+@media (max-width: 440px) {
+  .login__form-button-text {
+    margin: 0 15px;
+    text-align: center;
+  }
+
+  .login__form-input-field {
+    margin: 0 15px;
+  }
 }

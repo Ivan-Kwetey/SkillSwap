@@ -2,8 +2,13 @@ import React, { useState, useMemo } from "react";
 import "./FilterPane.css";
 import FilterButton from "../ui/FilterButton/FilterButton";
 import Button from "../ui/Button/Button";
+import {useIsDesktop} from "../../hooks/useIsDesktop";
+import { CloseIcon } from "../../assets/Images";
 
-const FilterPane = ({ skills = [], onApply }) => {
+
+const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
+  const isDesktop = useIsDesktop(1180);
+
   const [filters, setFilters] = useState({
     categories: [],
     locations: [],
@@ -12,8 +17,9 @@ const FilterPane = ({ skills = [], onApply }) => {
 
   // Unique skill categories
   const categories = useMemo(() => {
-    const cats = skills.flatMap((user) =>
-      user.skills?.map((skill) => skill.category).filter(Boolean) || []
+    const cats = skills.flatMap(
+      (user) =>
+        user.skills?.map((skill) => skill.category).filter(Boolean) || [],
     );
     return [...new Set(cats)];
   }, [skills]);
@@ -26,7 +32,7 @@ const FilterPane = ({ skills = [], onApply }) => {
   // Unique modes
   const modes = useMemo(() => {
     const allModes = skills.flatMap((user) =>
-      user.skills?.flatMap((skill) => skill.modes?.filter(Boolean) || [])
+      user.skills?.flatMap((skill) => skill.modes?.filter(Boolean) || []),
     );
     return [...new Set(allModes)];
   }, [skills]);
@@ -52,7 +58,13 @@ const FilterPane = ({ skills = [], onApply }) => {
   };
 
   return (
-    <aside className="filter-pane">
+    <aside className={`filter-pane ${isOpen ? "filter-pane--open" : ""}`}>
+      {!isDesktop && (
+        <button className="filter-pane__close" onClick={onClose}>
+          <img src={CloseIcon} alt="" />
+        </button>
+      )}
+
       <div className="filter-pane__header">
         <h3 className="filter-pane__title">Search skills</h3>
       </div>
@@ -116,7 +128,11 @@ const FilterPane = ({ skills = [], onApply }) => {
 
       {/* Actions */}
       <div className="filter-actions">
-        <Button variant="clear-filters" onClick={handleClear} text="Clear filters" />
+        <Button
+          variant="clear-filters"
+          onClick={handleClear}
+          text="Clear filters"
+        />
         <Button variant="apply-filters" onClick={handleApply} text="Apply" />
       </div>
     </aside>

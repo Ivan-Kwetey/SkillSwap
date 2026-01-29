@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-
+import { useIsDesktop } from "./hooks/useIsDesktop.js";
 import Navbar from "./components/ui/Navbar/Navbar";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login.jsx";
@@ -9,6 +9,8 @@ import Home from "./pages/Home/Home.jsx";
 import BrowseSkills from "./pages/BrowseSkills/BrowseSkills.jsx";
 import MemberProfile from "./pages/MemberProfile/MemberProfile.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import Profile from "./components/Profile/Profile";
+
 
 import {
   sendRequest as sendRequestApi,
@@ -16,8 +18,12 @@ import {
 } from "./api/api";
 
 import { useUsers } from "./context/UsersContext.jsx";
+import Footer from "./components/ui/Footer/Footer.jsx";
 
 const App = () => {
+  const isDesktop = useIsDesktop(1330);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   // Get users from context
   const { users } = useUsers();
 
@@ -105,7 +111,23 @@ const App = () => {
   /* Routes */
   return (
     <>
-      <Navbar />
+      <Navbar
+        onAvatarClick={() => {
+          if (!isDesktop) setIsProfileOpen(true);
+        }}
+      />
+      {!isDesktop && (
+        <Profile
+          isOpen={isProfileOpen}
+          onClose={() => setIsProfileOpen(false)}
+          currentUserId={currentUserId}
+          requests={requests}
+          onCancelRequest={cancelRequest}
+          onAcceptRequest={acceptRequest}
+          onDeclineRequest={declineRequest}
+        />
+      )}
+
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/landing" element={<Landing />} />
@@ -144,6 +166,7 @@ const App = () => {
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   );
 };

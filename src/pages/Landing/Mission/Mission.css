@@ -2,16 +2,18 @@
   background-color: #0f0f0f;
   display: flex;
   justify-content: center;
+  min-height: min(100svh, max-content);
 }
 
 .mission__information {
-  padding: 140px 134px;
+  /* padding: 140px 134px; */
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   max-width: 1728px;
+  padding: clamp(3rem, 9vh, 6rem) clamp(1rem, 6vw, 8rem);
 }
 
 .mission__description {
@@ -43,4 +45,43 @@
   color: #bebebe;
   font-weight: 400;
   font-size: 22px;
+  line-height: auto;
+}
+
+@media (max-width: 1199px) {
+  .mission__title {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mission__description {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 899px) {
+  .mission__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 743px) {
+  .mission__title {
+    font-size: 48px;
+  }
+
+  .mission__description {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .mission__title {
+    font-size: 32px;
+  }
+
+  .mission__subtitle {
+    font-size: 16px;
+  }
 }

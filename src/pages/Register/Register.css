@@ -27,6 +27,7 @@ FormInput {
   text-align: center;
   margin: 0;
   gap: 20px;
+  padding: 0 15px;
 }
 
 .register__form-title {
@@ -69,6 +70,7 @@ FormInput {
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  align-items: center;
 }
 
 .register__form-input-field {
@@ -77,4 +79,15 @@ FormInput {
   color: #1d1d1d;
   font-size: 16px;
   padding: 10px 10px;
+}
+
+@media (max-width: 440px) {
+  .register__form-button-text {
+    margin: 0 15px;
+    text-align: center;
+  }
+
+  .register__form-input-field {
+    margin: 0 15px;
+  }
 }

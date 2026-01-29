@@ -45,3 +45,12 @@
   justify-content: space-between;
 }
 
+
+@media (max-width: 440px) {
+.highlight-card__video {
+  width: 280px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+}

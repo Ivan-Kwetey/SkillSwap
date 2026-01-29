@@ -29,9 +29,6 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  /* background-color: #0e0e0e;
-  padding: 0 15px;
-  border-radius: 10px; */
 }
 
 .category-filter {
@@ -61,12 +58,16 @@
 }
 
 .filter-pane {
-  /* position: fixed; */
-  /* top: 160px; 
-  left: 134px;  */
   height: fit-content;
   overflow-y: auto;
   z-index: 0;
+}
+.filter-pane__close {
+  border: none;
+  width: fit-content;
+  background-color: transparent;
+  margin-bottom: 20px;
+  align-self: self-end;
 }
 
 .filter-pane__header {
@@ -74,4 +75,23 @@
   flex-direction: column;
   border-bottom: 1px solid #262626;
   padding: 0 0 15px 0;
+}
+
+@media (max-width: 1179px) {
+  .filter-pane {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border-radius: 0 20px 20px 0;
+    border-radius: 0;
+  }
+
+  .filter-pane--open {
+    transform: translateX(0);
+  }
 }

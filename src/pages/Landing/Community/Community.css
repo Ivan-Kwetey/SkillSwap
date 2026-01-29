@@ -1,12 +1,12 @@
-
 .community {
   background-color: #ecfbc2;
   display: flex;
   flex-direction: column;
-  padding: 140px 134px;
+  padding: clamp(1rem, 8vh, 8rem) clamp(1rem, 6vw, 8rem);
   gap: 100px;
   justify-content: center;
   align-items: center;
+  min-height: min(100svh, max-content);
 }
 
 .community__description {
@@ -22,12 +22,11 @@
 
 .community__title {
   font-size: 88px;
-  line-height: 82px;
+  line-height: auto;
   letter-spacing: -2px;
-  font-weight: 600;
+  font-weight: 700;
   color: #0f0f0f;
   margin: 0;
-  width: 650px;
 }
 
 .community__subtitle {
@@ -35,4 +34,38 @@
   font-size: 22px;
   font-weight: 500;
   margin: 0;
+}
+
+@media (max-width: 1199px) {
+  .community__title {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 899px) {
+  .community__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 743px) {
+  .community {
+    gap: 50px;
+  }
+  .community__title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 440px) {
+  .community__title {
+    font-size: 32px;
+  }
+
+  .community__subtitle {
+    font-size: 16px;
+  }
 }

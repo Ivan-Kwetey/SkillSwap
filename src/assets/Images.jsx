@@ -21,6 +21,8 @@ import ComingSoon from "../assets/Feed/comingsoon.svg"
 import Feedback from "../assets/MemberPage/feedback.svg"
 import MemberRatingIcon from "../assets/MemberPage/rating.svg"
 import Message from "../assets/MemberPage/message.svg"
+import DefaultAvatar from "../assets/profilePane/User.svg"
+import CloseIcon from "../assets/profilePane/close.svg"
 
 export {
   Logo,
@@ -45,5 +47,7 @@ export {
   Feedback,
   Message,
   MemberRatingIcon,
-  OutgoingRequests
+  OutgoingRequests,
+  DefaultAvatar,
+  CloseIcon
 };

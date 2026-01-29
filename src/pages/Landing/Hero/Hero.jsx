@@ -11,7 +11,7 @@ const Hero = ({ handleRegister }) => {
         <div className="hero__heading">
           <h1 className="hero__title">SkillSwap</h1>
           <div className="hero__description">
-            <p className="hero__description-text">
+            <p className="hero__description-text hero__description-text-first">
               Join the future of learning where knowledge is currency and
               everyone wins.
             </p>
@@ -20,7 +20,7 @@ const Hero = ({ handleRegister }) => {
               src={Heroart}
               alt="Hero Artwork"
             />
-            <p className="hero__description-text">
+            <p className="hero__description-text hero__description-text-second">
               SkillSwap connects people through meaningful skill exchange.
             </p>
           </div>

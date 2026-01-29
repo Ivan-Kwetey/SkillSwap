@@ -5,7 +5,7 @@
 
   display: flex;
   justify-content: center;
-  padding: 10px 134px;
+  padding: clamp(1rem, 10vh, 10px) clamp(1rem, 6vw, 8rem);
   background-color: #f3f3f3;
 }
 
@@ -33,4 +33,22 @@
 
 .navbar__logo {
   cursor: pointer;
+}
+.navbar__avatar {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1329px) {
+  .navbar__avatar {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 440px) {
+  .navbar__logo img {
+    width: 34px;
+    height: 34px;
+  }
 }

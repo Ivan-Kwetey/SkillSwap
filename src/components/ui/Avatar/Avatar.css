@@ -17,3 +17,15 @@
   height: 120px;
 
 }
+.highlight-card__avatar--navbar{
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+
+@media (max-width: 1329px) {
+  .navbar__avatar {
+    display: flex;
+    align-items: center;
+  }
+}

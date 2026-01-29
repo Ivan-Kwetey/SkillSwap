@@ -10,10 +10,14 @@ import {
   PendingRequests,
   OutgoingRequests,
   Completed,
+  CloseIcon,
 } from "../../assets/Images";
 import { useNavigate } from "react-router-dom";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 
 const Profile = ({
+  isOpen = false,
+  onClose,
   currentUserId,
   requests = [],
   onCancelRequest,
@@ -22,27 +26,35 @@ const Profile = ({
 }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const isDesktop = useIsDesktop(1330);
+
   const [activeTab, setActiveTab] = useState("overview");
 
-  // Safe filtering
   const sentRequests = requests.filter((r) => r.fromUserId === currentUserId);
 
   const pendingRequests = requests.filter(
     (r) => r.toUserId === currentUserId && r.status === "pending",
   );
+
   const handleSignOut = () => {
     logout();
     navigate("/landing");
   };
 
   return (
-    <div className="profile">
+    <div className={`profile ${!isDesktop && isOpen ? "profile--open" : ""}`}>
+      {!isDesktop && (
+        <button className="profile__close" onClick={onClose}>
+          <img src={CloseIcon} alt="" />
+        </button>
+      )}
+
       <div className="profile__username">
         <Avatar />
         <UserName label={user.name} />
       </div>
 
-      {/* Tabs */}
+      {/* Overview */}
       {activeTab === "overview" && (
         <div className="profile__items">
           <div
@@ -62,7 +74,7 @@ const Profile = ({
             className="profile__items-list clickable"
             onClick={() => setActiveTab("sent")}
           >
-            <img src={OutgoingRequests} alt="Pending Requests" />
+            <img src={OutgoingRequests} alt="Sent Requests" />
             <h2 className="profile__items-label">
               Sent Request
               {sentRequests.length > 0 && (
@@ -88,28 +100,26 @@ const Profile = ({
         </div>
       )}
 
-      {/* Sent requests */}
+      {/* Sent Requests */}
       {activeTab === "sent" && (
         <div className="profile__panel">
-          <div className="profile__panel-header">
-            <button
-              className="profile__back-btn"
-              onClick={() => setActiveTab("overview")}
-            >
-              Back
-            </button>
-          </div>
+          <button
+            className="profile__back-btn"
+            onClick={() => setActiveTab("overview")}
+          >
+            Back
+          </button>
 
           {sentRequests.length === 0 && (
             <p className="profile__request-empty">No sent requests.</p>
           )}
+
           <div className="profile__request-items">
             {sentRequests.map((req) => (
               <div key={req.id} className="profile__request-item">
                 <div>
                   Request sent to{" "}
                   <span className="profile__request-name">
-                    {" "}
                     {req.toUserName}
                   </span>
                 </div>
@@ -127,18 +137,15 @@ const Profile = ({
         </div>
       )}
 
-      {/* Pending request */}
+      {/* Pending Requests */}
       {activeTab === "pending" && (
         <div className="profile__panel">
-          <div className="profile__panel-header">
-            <button
-              className="profile__back-btn"
-              onClick={() => setActiveTab("overview")}
-            >
-              Back
-            </button>
-            <h3 className="profile__incoming-request">Pending Requests</h3>
-          </div>
+          <button
+            className="profile__back-btn"
+            onClick={() => setActiveTab("overview")}
+          >
+            Back
+          </button>
 
           {pendingRequests.length === 0 && (
             <p className="profile__empty">No pending requests.</p>
@@ -152,6 +159,7 @@ const Profile = ({
                   {req.fromUserName}
                 </span>
               </div>
+
               <div className="profile__request-actions">
                 <Button
                   text="Accept"
@@ -169,7 +177,6 @@ const Profile = ({
         </div>
       )}
 
-      {/* sign out */}
       <div className="profile__items-sign-out">
         <Button text="Sign out" variant="sign-out" onClick={handleSignOut} />
       </div>
