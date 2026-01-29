@@ -16,11 +16,13 @@
   top: 0;
   width: 100%;
   max-width: 1460px;
+  align-items: center;
 }
 
 .navbar__buttons {
   display: flex;
   gap: 14px;
+  align-items: center;
 }
 
 .navbar__buttons a {

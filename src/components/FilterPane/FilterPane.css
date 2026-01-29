@@ -68,6 +68,7 @@
   background-color: transparent;
   margin-bottom: 20px;
   align-self: self-end;
+  display: none;
 }
 
 .filter-pane__header {
@@ -78,6 +79,9 @@
 }
 
 @media (max-width: 1179px) {
+  .filter-pane__close {
+    display: flex;
+  }
   .filter-pane {
     position: fixed;
     top: 0;

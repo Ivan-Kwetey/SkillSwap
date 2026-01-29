@@ -175,6 +175,5 @@ background-color: transparent;
   .profile {
     position: static;
     transform: none;
-    /* height: auto; */
   }
 }
