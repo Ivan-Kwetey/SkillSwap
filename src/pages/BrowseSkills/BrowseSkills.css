@@ -10,7 +10,7 @@
   z-index: 900;
   padding: clamp(1rem, 10vh, 20px) clamp(1rem, 20vw, 50px);
   background-color: #ffffff;
-margin:  0 auto;
+  margin: 0 auto;
   z-index: 10;
   justify-content: center;
   display: flex;

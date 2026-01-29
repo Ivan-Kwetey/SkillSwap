@@ -74,3 +74,22 @@
   font-weight: 400;
   margin: 0;
 }
+
+@media (max-width: 1023px) {
+  .member-pane {
+    max-width: 100%;
+  }
+
+  .member-pane__items {
+
+    gap: 50px;
+    width: 100%;
+  }
+
+  .member-pane__info {
+
+    gap: 10px;
+    /* width: 100%; */
+    flex-wrap: wrap;
+  }
+}

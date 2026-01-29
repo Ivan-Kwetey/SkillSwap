@@ -104,7 +104,6 @@ const BrowseSkills = ({
       </div>
 
       <div className="browse-layout">
-        
         {isDesktop && (
           <FilterPane skills={allSkills} onApply={handleApplyFilters} />
         )}

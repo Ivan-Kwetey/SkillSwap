@@ -11,7 +11,7 @@ import Button from "../../components/ui/Button/Button";
 import { Facebook, Instagram, X } from "../../assets/Images";
 import MemberPane from "../../components/MemberPane/MemberPane";
 import { useMemberProfile } from "../../hooks/useMemberProfile";
-import { useUsers } from "../../context/UsersContext.jsx"; 
+import { useUsers } from "../../context/UsersContext.jsx";
 
 const MemberProfile = ({
   currentUserId,
@@ -22,7 +22,6 @@ const MemberProfile = ({
   declineRequest,
 }) => {
   const { id } = useParams();
-
 
   const { users, loadingUsers } = useUsers();
 
@@ -53,14 +52,16 @@ const MemberProfile = ({
   return (
     <div className="member-profile">
       <div className="member-profile__page">
-        <MemberPane
-          sentRequest={sentRequest}
-          sentToName={profile.name}
-          onRequestClick={handleRequestClick}
-        />
+        <div className="member-profile__page-first">
+          <MemberPane
+            sentRequest={sentRequest}
+            sentToName={profile.name}
+            onRequestClick={handleRequestClick}
+          />
+        </div>
 
         {/* mid*/}
-        <div className="member-profile__content">
+        <div className="member-profile__content member-profile__page-second">
           {/* Top */}
           <div className="member-profile__top">
             <div className="member-profile__header">
@@ -134,7 +135,9 @@ const MemberProfile = ({
               {completedSwaps.length ? (
                 completedSwaps.map((s) => (
                   <li key={s.id} className="member-profile__completed-item">
-                    <div className="member-profile__project-name">{s.title}</div>
+                    <div className="member-profile__project-name">
+                      {s.title}
+                    </div>
                     <span>completed on {s.completedAt}</span>
                   </li>
                 ))
@@ -163,13 +166,15 @@ const MemberProfile = ({
         </div>
 
         {/* profile-pane */}
-        <Profile
-          currentUserId={currentUserId}
-          requests={requests}
-          onCancelRequest={cancelRequest}
-          onAcceptRequest={acceptRequest}
-          onDeclineRequest={declineRequest}
-        />
+        <div className="member-profile__page-third">
+          <Profile
+            currentUserId={currentUserId}
+            requests={requests}
+            onCancelRequest={cancelRequest}
+            onAcceptRequest={acceptRequest}
+            onDeclineRequest={declineRequest}
+          />
+        </div>
       </div>
     </div>
   );
