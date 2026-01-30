@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { UsersContext } from "./usersContextObject";
 import { fetchUsers } from "../api/api";
 import { normalizeUsers } from "../utils/usersHelpers";
@@ -20,5 +20,3 @@ export const UsersProvider = ({ children }) => {
     </UsersContext.Provider>
   );
 };
-
-export const useUsers = () => useContext(UsersContext);

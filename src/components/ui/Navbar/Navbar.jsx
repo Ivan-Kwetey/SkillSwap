@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth } from "../../../context/useAuth";
 import { Logo, HamburgerIcon, CloseIcon } from "../../../assets/Images";
 import "./Navbar.css";
 import Avatar from "../Avatar/Avatar";

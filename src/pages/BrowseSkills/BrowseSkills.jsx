@@ -4,7 +4,7 @@ import Profile from "../../components/Profile/Profile";
 import UserCard from "../../components/UserCard/UserCard";
 import FilterPane from "../../components/FilterPane/FilterPane";
 import SearchBar from "../../components/ui/SearchBar/SearchBar";
-import { useUsers } from "../../context/UsersContext.jsx";
+import { useUsers } from "../../context/useUsers.js";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import Button from "../../components/ui/Button/Button.jsx";
 

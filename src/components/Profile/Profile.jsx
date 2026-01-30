@@ -3,7 +3,7 @@ import "./Profile.css";
 import Avatar from "../ui/Avatar/Avatar";
 import UserName from "../ui/UserName/UserName";
 import Button from "../ui/Button/Button";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
 import {
   PendingRequests,
   OutgoingRequests,
@@ -29,7 +29,7 @@ const Profile = ({
 
   const sentRequests = requests.filter((r) => r.fromUserId === currentUserId);
   const pendingRequests = requests.filter(
-    (r) => r.toUserId === currentUserId && r.status === "pending"
+    (r) => r.toUserId === currentUserId && r.status === "pending",
   );
 
   const handleSignOut = () => {

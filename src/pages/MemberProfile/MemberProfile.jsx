@@ -14,7 +14,7 @@ import Profile from "../../components/Profile/Profile";
 import MemberPane from "../../components/MemberPane/MemberPane";
 
 import { useMemberProfile } from "../../hooks/useMemberProfile";
-import { useUsers } from "../../context/UsersContext.jsx";
+import { useUsers } from "../../context/useUsers.js";
 
 const MemberProfileSkills = ({ offers, wants }) => (
   <section className="member-profile__mid" aria-labelledby="skills-title">
