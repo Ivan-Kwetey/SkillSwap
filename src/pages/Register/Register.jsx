@@ -1,61 +1,63 @@
-import { useState, React } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import Footer from "../../components/ui/Footer/Footer";
 import "./Register.css";
 import Button from "../../components/ui/Button/Button";
 import FormInput from "../../components/ui/FormInput/FormInput";
+import { validateEmail } from "../../utils/validateEmail";
 
 export default function Register() {
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const { valid, message } = validateEmail(email);
+    if (!valid) {
+      alert(message);
+      return;
+    }
+
+    login(email.trim());
+    navigate("/home");
+  };
+
   const [email, setEmail] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    console.log("register attempted");
-    console.log("EMAIL:", email);
-
-    if (!email) {
-      alert("Please enter your email");
-      return;
-    }
-    login(email);
-
-    navigate("/home");
-  };
-
   return (
     <div className="register">
-      <form action="" className="register__form" onSubmit={handleRegister}>
-        <div className="register__form-header">
-          <h2 className="register__form-title">Create SkillSwap Account</h2>
+      <form className="register__form" onSubmit={handleRegister}>
+        <header className="register__form-header">
+          <h1 className="register__form-title">Create SkillSwap Account</h1>
           <p className="register__form-subtitle">
-            Join our community, start swapping
+            Join our community and start swapping skills
           </p>
-        </div>
-        <div className="register__form-input">
+        </header>
+
+        <div className="register__form-input-container">
           <FormInput
-            variant="username"
+            className="register__form-input-field"
+            id="email"
+            name="email"
+            type="email"
             placeholder="Email or Username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            name="email"
-            id="email"
-            className="register__form-input-field"
+            autoComplete="username"
+            required
           />
         </div>
-        <div className="register__form-subheader">
+
+        <footer className="register__form-subheader">
           <p className="register__form-button-text">
-            Create your free SkillSwap account and start swapping skills with
-            our community
+            Create your free SkillSwap account and start connecting with our
+            community.
           </p>
           <div className="register__form-buttons">
-            <Button text="register" variant="register" type="submit" />
+            <Button text="Register" variant="register" type="submit" />
           </div>
-        </div>
+        </footer>
       </form>
-      <Footer />
     </div>
   );
 }

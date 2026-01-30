@@ -5,9 +5,10 @@ export const footerLinks = [
       {
         label: "About Us",
         href: "/about",
+        disabled: true,
       },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
+      { label: "Careers", href: "/careers", disabled: true },
+      { label: "Contact", href: "/contact", disabled: true },
     ],
   },
   {
@@ -16,9 +17,10 @@ export const footerLinks = [
       {
         label: "How It Works",
         href: "/how-it-works",
+        disabled: true,
       },
-      { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Features", href: "/features", disabled: true },
+      { label: "Pricing", href: "/pricing", disabled: true },
     ],
   },
   {
@@ -27,8 +29,9 @@ export const footerLinks = [
       {
         label: "Talents",
         href: "/talents",
+        disabled: true,
       },
-      { label: "Programs", href: "/programs" },
+      { label: "Programs", href: "/programs", disabled: true },
     ],
   },
 ];

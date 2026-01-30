@@ -1,7 +1,11 @@
 import React from "react";
 
 const Mode = ({ modes }) => {
-  return <div className="mode">{modes.join("|")}</div>;
+  return (
+    <p className="mode" aria-label={`Modes: ${modes.join(", ")}`}>
+      {modes.join(" | ")}
+    </p>
+  );
 };
 
 export default Mode;

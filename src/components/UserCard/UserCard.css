@@ -45,7 +45,10 @@
   align-items: start;
   width: 100%;
 }
-
+.skill-card__link{
+  border: none;
+  background-color: transparent;
+}
 .skill-card__user-info {
   display: flex;
   flex-direction: column;

@@ -7,6 +7,7 @@ const FilterButton = ({ label, selected, onClick }) => {
       className={`filter-button filter-button--${selected ? "selected" : ""}`}
       onClick={onClick}
       type="button"
+      aria-pressed={selected}
     >
       {label}
     </button>

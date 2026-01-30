@@ -4,9 +4,12 @@ import { purposeContent } from "../../../data/purposeContent";
 
 const Purpose = () => {
   return (
-    <section className="purpose">
+    <section className="purpose" aria-labelledby="purpose-title">
       <div className="purpose__information">
-        <h2 className="purpose__title">Why choose SkillSwap?</h2>
+        <h2 id="purpose-title" className="purpose__title">
+          Why choose SkillSwap?
+        </h2>
+
         <div className="purpose__items">
           {purposeContent.map(({ id, title, description }) => (
             <article key={id} className="purpose__item">

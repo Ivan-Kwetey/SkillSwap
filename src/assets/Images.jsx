@@ -23,6 +23,7 @@ import MemberRatingIcon from "../assets/MemberPage/rating.svg"
 import Message from "../assets/MemberPage/message.svg"
 import DefaultAvatar from "../assets/profilePane/User.svg"
 import CloseIcon from "../assets/profilePane/close.svg"
+import HamburgerIcon from "../assets/Navbar/HamburgerIcon.svg"
 
 export {
   Logo,
@@ -49,5 +50,6 @@ export {
   MemberRatingIcon,
   OutgoingRequests,
   DefaultAvatar,
-  CloseIcon
+  CloseIcon,
+  HamburgerIcon
 };

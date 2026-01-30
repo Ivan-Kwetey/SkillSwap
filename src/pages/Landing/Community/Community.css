@@ -27,6 +27,7 @@
   font-weight: 700;
   color: #0f0f0f;
   margin: 0;
+  max-width: 800px;
 }
 
 .community__subtitle {

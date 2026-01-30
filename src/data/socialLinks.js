@@ -3,17 +3,17 @@ import { Facebook, X, Instagram} from "../assets/Images.jsx";
 export const socialLinks = [
   {
     label: "X",
-    href: " ",
+    // href: "",
     icon: X,
   },
   {
     label: "Facebook",
-    href: " ",
+    // href: " ",
     icon: Facebook,
   },
   {
     label: "Instagram",
-    href: " ",
+    // href: " ",
     icon: Instagram,
   },
 ];

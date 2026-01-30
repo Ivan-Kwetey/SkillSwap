@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Footer.css";
 import { FullLogo, ScrollUp } from "../../../assets/Images";
-import { Link } from "react-router-dom";
 import { footerLinks } from "../../../data/footerLinks";
 import { socialLinks } from "../../../data/socialLinks";
-import { useEffect, useState } from "react";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,10 +11,10 @@ const scrollToTop = () => {
 const Footer = () => {
   const [visible, setVisible] = useState(false);
 
+  const handleDisabledClick = (e) => e.preventDefault();
+
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > 800);
-    };
+    const onScroll = () => setVisible(window.scrollY > 800);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -25,27 +23,40 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__contents">
         <img src={FullLogo} alt="SkillSwap Logo" className="footer__logo" />
+
         <div className="footer__link-section">
           {footerLinks.map((section) => (
-            <div key={section.title} className="footer__link-column">
+            <nav key={section.title} aria-label={section.title} className="footer__link-column">
               <h4 className="footer__title">{section.title}</h4>
               <ul className="footer__list">
                 {section.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="footer__link">
-                      {link.label}
+                    <a
+                      href={link.href}
+                      className={`footer__link ${link.disabled ? "footer__link--disabled" : ""}`}
+                      onClick={link.disabled ? handleDisabledClick : undefined}
+                      aria-disabled={link.disabled}
+                      tabIndex={link.disabled ? -1 : 0}
+                    >
+                      <div className="footer__link-content">
+                        <span className="footer__link-label">{link.label}</span>
+                        {link.disabled && (
+                          <span className="footer__coming-soon">Coming soon</span>
+                        )}
+                      </div>
                     </a>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
+
         <div className="footer__social">
-          {socialLinks.map(({ label, href, icon }) => (
+          {socialLinks.map(({ label, icon }) => (
             <a
               key={label}
-              href={href}
+              // href={href}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
@@ -56,6 +67,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
+
       <div className="scroll_up__container">
         {visible && (
           <button

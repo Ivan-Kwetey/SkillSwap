@@ -17,6 +17,7 @@ const HighlightCard = ({ videoUrl, tags, user }) => {
         autoPlay
         playsInline
         className="highlight-card__video"
+        title={`Highlight video by ${user.name}`}
       />
 
       <div className="highlight-card__overlay">
@@ -25,6 +26,7 @@ const HighlightCard = ({ videoUrl, tags, user }) => {
             <Tag variant="primary" key={tag} label={tag} />
           ))}
         </div>
+
         <div className="highlight-card__user">
           <div className="highlight-card__user-identity">
             <Avatar src={user.avatar} alt={user.name} />
@@ -37,10 +39,12 @@ const HighlightCard = ({ videoUrl, tags, user }) => {
               />
             </div>
           </div>
+
           <Link
             to={`/profile/${user.id}`}
-            className="highlight-card__profile-link"
-            aria-label="View profile"
+            className="highlight-card__profile-link highlight-card__profile-link--disabled"
+            aria-label={`View profile of ${user.name}`}
+            onClick={(e) => e.preventDefault()} // keep UI behavior
           >
             <img
               src={linkIcon}

@@ -11,26 +11,74 @@ import MemberProfile from "./pages/MemberProfile/MemberProfile.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import Profile from "./components/Profile/Profile";
 
-
 import {
+  fetchUsers,
   sendRequest as sendRequestApi,
   cancelRequest as cancelRequestApi,
 } from "./api/api";
 
-import { useUsers } from "./context/UsersContext.jsx";
+import { UsersProvider } from "./context/UsersContext.jsx";
 import Footer from "./components/ui/Footer/Footer.jsx";
 
 const App = () => {
   const isDesktop = useIsDesktop(1330);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  // Get users from context
-  const { users } = useUsers();
+  /** users api state */
+  const [users, setUsers] = useState([]);
+  const [loadingUsers, setLoadingUsers] = useState(true);
 
+  useEffect(() => {
+    fetchUsers(12)
+      .then((data) => {
+        const normalized = data.map((u, index) => ({
+          id: `user-${index + 1}`,
+          name: `${u.name.first} ${u.name.last}`,
+          avatar: u.picture.medium,
+          location: u.location.country,
+          rating: (Math.random() * 2 + 3).toFixed(1),
+          skills:
+            index % 3 === 0
+              ? [
+                  {
+                    name: "UI/UX Design",
+                    category: "Design",
+                    modes: ["remote"],
+                  },
+                ]
+              : index % 3 === 1
+                ? [
+                    {
+                      name: "JavaScript",
+                      category: "Programming",
+                      modes: ["remote"],
+                    },
+                  ]
+                : [
+                    {
+                      name: "Python",
+                      category: "Programming",
+                      modes: ["in-person"],
+                    },
+                    {
+                      name: "Illustration",
+                      category: "Design",
+                      modes: ["remote"],
+                    },
+                  ],
+        }));
+
+        setUsers(normalized);
+      })
+      .catch(console.error)
+      .finally(() => setLoadingUsers(false));
+  }, []);
+
+  /** currentuser */
   const currentUserId = users[0]?.id || null;
   const currentUserName = users[0]?.name || "You";
 
-  /* Skill swap requests */
+  /** skill swap requests state */
   const [requests, setRequests] = useState(() => {
     const saved = localStorage.getItem("skillSwapRequests");
     return saved ? JSON.parse(saved) : [];
@@ -40,7 +88,7 @@ const App = () => {
     localStorage.setItem("skillSwapRequests", JSON.stringify(requests));
   }, [requests]);
 
-  /* Actions */
+  /** actions */
   const sendRequest = async (toUser) => {
     if (!currentUserId) return;
 
@@ -108,14 +156,14 @@ const App = () => {
     );
   };
 
-  /* Routes */
   return (
-    <>
+    <UsersProvider users={users} loadingUsers={loadingUsers}>
       <Navbar
         onAvatarClick={() => {
           if (!isDesktop) setIsProfileOpen(true);
         }}
       />
+
       {!isDesktop && (
         <Profile
           isOpen={isProfileOpen}
@@ -166,8 +214,9 @@ const App = () => {
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>
+
       <Footer />
-    </>
+    </UsersProvider>
   );
 };
 

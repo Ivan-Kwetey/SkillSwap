@@ -28,3 +28,13 @@
   color: #8a8a8a;
   font-size: 14px;
 }
+
+.search-bar__input:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  background-color: #fff;
+}
+
+.search-bar__input-field:focus-visible {
+  outline: none;
+}

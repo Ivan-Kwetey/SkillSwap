@@ -1,7 +1,8 @@
 .browse-skills {
   position: relative;
   height: fit-content;
-  padding: 0 clamp(1rem, 1vw, 8rem) 20px;
+  padding: 0 clamp(1rem, 1vw, 8rem) 100px;
+  justify-content: space-between;
 }
 
 .browse-skills__search {

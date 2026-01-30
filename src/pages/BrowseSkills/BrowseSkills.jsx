@@ -21,21 +21,26 @@ const BrowseSkills = ({
   const { users, loadingUsers } = useUsers();
   const isDesktop = useIsDesktop(1330);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
   const [currentPage, setCurrentPage] = useState(1);
-  const [allSkills, setAllSkills] = useState([]);
-  const [filteredSkills, setFilteredSkills] = useState([]);
 
-  // update allSkills when users load
+  const allSkills = useMemo(() => {
+    if (!users?.length) return [];
+    return users.filter((u) => u.id !== currentUserId);
+  }, [users, currentUserId]);
+
+  const [filteredSkills, setFilteredSkills] = useState(allSkills);
+
   useEffect(() => {
-    if (loadingUsers || !users?.length) return;
+    // avoid synchronous state update
+    const id = setTimeout(() => {
+      setFilteredSkills(allSkills);
+      setCurrentPage(1);
+    }, 0);
 
-    const others = users.filter((u) => u.id !== currentUserId);
-    setAllSkills(others);
-    setFilteredSkills(others);
-    setCurrentPage(1);
-  }, [users, loadingUsers, currentUserId]);
+    return () => clearTimeout(id);
+  }, [allSkills]);
 
+  // Pagination logic
   const totalPages = Math.ceil(filteredSkills.length / ITEMS_PER_PAGE);
 
   const currentUsers = useMemo(() => {
@@ -49,12 +54,10 @@ const BrowseSkills = ({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Search handler
   const handleSearch = (query) => {
     setCurrentPage(1);
-    if (!query) {
-      setFilteredSkills(allSkills);
-      return;
-    }
+    if (!query) return setFilteredSkills(allSkills);
 
     const q = query.toLowerCase();
     setFilteredSkills(
@@ -71,6 +74,7 @@ const BrowseSkills = ({
     );
   };
 
+  // Filter handler
   const handleApplyFilters = (filters) => {
     setCurrentPage(1);
     setFilteredSkills(
@@ -90,25 +94,18 @@ const BrowseSkills = ({
 
   if (loadingUsers) return <div style={{ padding: 24 }}>Loading users...</div>;
 
-  const sentRequestsCount = requests.filter(
-    (r) => r.fromUserId === currentUserId,
-  ).length;
-  const pendingRequestsCount = requests.filter(
-    (r) => r.toUserId === currentUserId && r.status === "pending",
-  ).length;
-
   return (
     <div className="browse-skills">
-      <div className="browse-skills__search">
+      {/* Semantic header */}
+      <header className="browse-skills__search">
         <SearchBar onSearch={handleSearch} />
-      </div>
+      </header>
 
       <div className="browse-layout">
         {isDesktop && (
           <FilterPane skills={allSkills} onApply={handleApplyFilters} />
         )}
 
-        {/* slide-in panel */}
         {!isDesktop && (
           <FilterPane
             skills={allSkills}
@@ -130,7 +127,8 @@ const BrowseSkills = ({
             />
           </div>
 
-          <div className="skill-cards">
+          {/* Skill cards */}
+          <section className="skill-cards">
             {currentUsers.length === 0 ? (
               <p>No users match your filters.</p>
             ) : (
@@ -150,10 +148,11 @@ const BrowseSkills = ({
                 );
               })
             )}
-          </div>
+          </section>
 
+          {/* Pagination */}
           {totalPages > 1 && (
-            <div className="pagination">
+            <section className="pagination">
               <button
                 className="pagination__btn"
                 disabled={currentPage === 1}
@@ -184,10 +183,11 @@ const BrowseSkills = ({
               >
                 Next
               </button>
-            </div>
+            </section>
           )}
         </main>
 
+        {/* Profile panel */}
         {isDesktop && (
           <Profile
             currentUserId={currentUserId}

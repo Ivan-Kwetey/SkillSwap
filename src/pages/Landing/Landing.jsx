@@ -1,25 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Hero from "./Hero/Hero";
-import Navbar from "../../components/ui/Navbar/Navbar";
 import Mission from "./Mission/Mission";
 import Community from "./Community/Community";
 import Purpose from "./Purpose/Purpose";
 import GetStarted from "./GetStarted/GetStarted";
-import Footer from "../../components/ui/Footer/Footer";
 
 const Landing = () => {
-  const handleRegister = () => alert("registered!");
-  const handleSignIn = () => alert("signed in!");
+  const navigate = useNavigate();
+
+  // Navigate to signup page
+  const handleRegister = () => navigate("/register");
+
+  // Optional: handle sign in separately
+  const handleSignIn = () => navigate("/login");
 
   return (
     <>
       <Hero handleRegister={handleRegister} handleSignIn={handleSignIn} />
-      <Mission />
-      <Community />
-      <Purpose />
-      <GetStarted />
-      <Footer />
+      <Mission handleRegister={handleRegister} />
+      <Community handleRegister={handleRegister} />
+      <Purpose handleRegister={handleRegister} />
+      <GetStarted handleRegister={handleRegister} />
     </>
   );
 };
+
 export default Landing;

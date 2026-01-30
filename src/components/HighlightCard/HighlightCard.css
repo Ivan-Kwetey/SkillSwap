@@ -44,13 +44,17 @@
   display: flex;
   justify-content: space-between;
 }
-
+.highlight-card__profile-link--disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
 
 @media (max-width: 440px) {
-.highlight-card__video {
-  width: 280px;
-  height: 450px;
-  object-fit: cover;
-  border-radius: 18px;
-}
+  .highlight-card__video {
+    width: 280px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 18px;
+  }
 }

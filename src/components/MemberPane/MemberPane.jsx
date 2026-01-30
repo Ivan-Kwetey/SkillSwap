@@ -5,9 +5,9 @@ import Button from "../ui/Button/Button";
 
 const MemberPane = ({ sentRequest, sentToName, onRequestClick }) => {
   return (
-    <div className="member-pane">
+    <aside className="member-pane" aria-label="Member actions panel">
       <div className="member-pane__info">
-        <h1 className="member-pane__last-seen">Last seen: A week ago</h1>
+        <p className="member-pane__last-seen">Last seen: A week ago</p>
         <p className="member-pane__swap-status">
           {sentRequest
             ? `You sent a request for a skill swap to ${sentToName}`
@@ -24,21 +24,24 @@ const MemberPane = ({ sentRequest, sentToName, onRequestClick }) => {
         </div>
       </div>
 
-      <div className="member-pane__items">
-        <div className="member-pane__items-list">
+      {/* Optional future actions */}
+      {/*
+      <section className="member-pane__items" aria-label="Member actions">
+        <article className="member-pane__items-list">
           <img src={Message} alt="Leave a message" />
           <h2 className="member-pane__items-label">Leave a message</h2>
-        </div>
-        <div className="member-pane__items-list">
+        </article>
+        <article className="member-pane__items-list">
           <img src={MemberRatingIcon} alt="Leave a rating" />
           <h2 className="member-pane__items-label">Leave a rating</h2>
-        </div>
-        <div className="member-pane__items-list">
+        </article>
+        <article className="member-pane__items-list">
           <img src={Feedback} alt="Leave feedback" />
           <h2 className="member-pane__items-label">Leave feedback</h2>
-        </div>
-      </div>
-    </div>
+        </article>
+      </section>
+      */}
+    </aside>
   );
 };
 

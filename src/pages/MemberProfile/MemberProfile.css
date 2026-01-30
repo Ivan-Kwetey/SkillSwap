@@ -1,7 +1,6 @@
 .member-profile {
   display: flex;
   justify-content: center;
-  /* padding: 50px 0; */
   padding: 40px clamp(1rem, 6vw, 8rem);
 }
 .member-profile__page-first {

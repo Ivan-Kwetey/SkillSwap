@@ -10,8 +10,12 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className="search-bar">
-      <div className="search-bar__input">
-        <img src={SearchIcon} alt="" className="search-bar__input-icon" />
+      <label htmlFor="search" className="search-bar__input">
+        <img
+          src={SearchIcon}
+          alt="search icon"
+          className="search-bar__input-icon"
+        />
         <FormInput
           className="search-bar__input-field"
           type="text"
@@ -21,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
           autoComplete="off"
           onChange={handleChange}
         />
-      </div>
+      </label>
     </div>
   );
 };

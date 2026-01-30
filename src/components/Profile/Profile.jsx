@@ -5,11 +5,8 @@ import UserName from "../ui/UserName/UserName";
 import Button from "../ui/Button/Button";
 import { useAuth } from "../../context/AuthContext";
 import {
-  ActiveExchange,
-  ManageSkills,
   PendingRequests,
   OutgoingRequests,
-  Completed,
   CloseIcon,
 } from "../../assets/Images";
 import { useNavigate } from "react-router-dom";
@@ -31,9 +28,8 @@ const Profile = ({
   const [activeTab, setActiveTab] = useState("overview");
 
   const sentRequests = requests.filter((r) => r.fromUserId === currentUserId);
-
   const pendingRequests = requests.filter(
-    (r) => r.toUserId === currentUserId && r.status === "pending",
+    (r) => r.toUserId === currentUserId && r.status === "pending"
   );
 
   const handleSignOut = () => {
@@ -41,22 +37,31 @@ const Profile = ({
     navigate("/landing");
   };
 
+  if (!user) {
+    return (
+      <aside className="profile profile--loading">
+        <p>Loading profile...</p>
+      </aside>
+    );
+  }
+
   return (
-    <div className={`profile ${!isDesktop && isOpen ? "profile--open" : ""}`}>
-      {!isDesktop && (
+    <aside className={`profile ${!isDesktop && isOpen ? "profile--open" : ""}`}>
+      {!isDesktop && onClose && (
         <button className="profile__close" onClick={onClose}>
-          <img src={CloseIcon} alt="" />
+          <img src={CloseIcon} alt="close icon" />
         </button>
       )}
 
+      {/* User Info */}
       <div className="profile__username">
         <Avatar />
-        <UserName label={user.name} />
+        <UserName label={user?.name || "Guest"} />
       </div>
 
-      {/* Overview */}
+      {/* Overview Tab */}
       {activeTab === "overview" && (
-        <div className="profile__items">
+        <section className="profile__items" aria-label="Overview">
           <div
             className="profile__items-list clickable"
             onClick={() => setActiveTab("pending")}
@@ -82,27 +87,12 @@ const Profile = ({
               )}
             </h2>
           </div>
-
-          <div className="profile__items-list">
-            <img src={ActiveExchange} alt="Active Exchanges" />
-            <h2 className="profile__items-label">Active Exchanges</h2>
-          </div>
-
-          <div className="profile__items-list">
-            <img src={ManageSkills} alt="Manage Skills" />
-            <h2 className="profile__items-label">Manage Skills</h2>
-          </div>
-
-          <div className="profile__items-list">
-            <img src={Completed} alt="Completed Exchanges" />
-            <h2 className="profile__items-label">Completed</h2>
-          </div>
-        </div>
+        </section>
       )}
 
-      {/* Sent Requests */}
+      {/* Sent Requests Tab */}
       {activeTab === "sent" && (
-        <div className="profile__panel">
+        <section className="profile__panel" aria-label="Sent Requests">
           <button
             className="profile__back-btn"
             onClick={() => setActiveTab("overview")}
@@ -110,77 +100,78 @@ const Profile = ({
             Back
           </button>
 
-          {sentRequests.length === 0 && (
+          {sentRequests.length === 0 ? (
             <p className="profile__request-empty">No sent requests.</p>
-          )}
+          ) : (
+            <div className="profile__request-items">
+              {sentRequests.map((req) => (
+                <article key={req.id} className="profile__request-item">
+                  <div>
+                    Request sent to{" "}
+                    <span className="profile__request-name">
+                      {req.toUserName || "Unknown"}
+                    </span>
+                  </div>
 
-          <div className="profile__request-items">
-            {sentRequests.map((req) => (
-              <div key={req.id} className="profile__request-item">
-                <div>
-                  Request sent to{" "}
+                  {req.status === "pending" && (
+                    <Button
+                      text="Cancel"
+                      variant="cancel-request-pane"
+                      onClick={() => onCancelRequest?.(req.toUserId)}
+                    />
+                  )}
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Pending Requests Tab */}
+      {activeTab === "pending" && (
+        <section className="profile__panel" aria-label="Pending Requests">
+          <button
+            className="profile__back-btn"
+            onClick={() => setActiveTab("overview")}
+          >
+            Back
+          </button>
+
+          {pendingRequests.length === 0 ? (
+            <p className="profile__empty">No pending requests.</p>
+          ) : (
+            pendingRequests.map((req) => (
+              <article key={req.id} className="profile__in-request-item">
+                <div className="profile__in-request-name">
+                  Request from{" "}
                   <span className="profile__request-name">
-                    {req.toUserName}
+                    {req.fromUserName || "Unknown"}
                   </span>
                 </div>
 
-                {req.status === "pending" && (
+                <div className="profile__request-actions">
                   <Button
-                    text="Cancel"
-                    variant="cancel-request-pane"
-                    onClick={() => onCancelRequest(req.toUserId)}
+                    text="Accept"
+                    variant="accept-request"
+                    onClick={() => onAcceptRequest?.(req.fromUserId)}
                   />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Pending Requests */}
-      {activeTab === "pending" && (
-        <div className="profile__panel">
-          <button
-            className="profile__back-btn"
-            onClick={() => setActiveTab("overview")}
-          >
-            Back
-          </button>
-
-          {pendingRequests.length === 0 && (
-            <p className="profile__empty">No pending requests.</p>
+                  <Button
+                    text="Decline"
+                    variant="decline-request"
+                    onClick={() => onDeclineRequest?.(req.fromUserId)}
+                  />
+                </div>
+              </article>
+            ))
           )}
-
-          {pendingRequests.map((req) => (
-            <div key={req.id} className="profile__in-request-item">
-              <div className="profile__in-request-name">
-                Request from{" "}
-                <span className="profile__request-name">
-                  {req.fromUserName}
-                </span>
-              </div>
-
-              <div className="profile__request-actions">
-                <Button
-                  text="Accept"
-                  variant="accept-request"
-                  onClick={() => onAcceptRequest(req.fromUserId)}
-                />
-                <Button
-                  text="Decline"
-                  variant="decline-request"
-                  onClick={() => onDeclineRequest(req.fromUserId)}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        </section>
       )}
 
+      {/* Sign out */}
       <div className="profile__items-sign-out">
         <Button text="Sign out" variant="sign-out" onClick={handleSignOut} />
       </div>
-    </div>
+    </aside>
   );
 };
 

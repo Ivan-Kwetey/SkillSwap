@@ -5,8 +5,8 @@ import "./HighlightsCarousel.css";
 
 const HighlightsCarousel = () => {
   return (
-    <section className="highlights">
-      <div className="highlights__track">
+    <section className="highlights" aria-label="User highlight videos">
+      <div className="highlights__track" role="list">
         {highlights.map((item) => (
           <HighlightCard key={item.id} {...item} />
         ))}

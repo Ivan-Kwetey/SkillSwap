@@ -2,9 +2,8 @@ import React, { useState, useMemo } from "react";
 import "./FilterPane.css";
 import FilterButton from "../ui/FilterButton/FilterButton";
 import Button from "../ui/Button/Button";
-import {useIsDesktop} from "../../hooks/useIsDesktop";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 import { CloseIcon } from "../../assets/Images";
-
 
 const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
   const isDesktop = useIsDesktop(1180);
@@ -15,7 +14,6 @@ const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
     modes: [],
   });
 
-  // Unique skill categories
   const categories = useMemo(() => {
     const cats = skills.flatMap(
       (user) =>
@@ -24,12 +22,10 @@ const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
     return [...new Set(cats)];
   }, [skills]);
 
-  // Unique locations
   const locations = useMemo(() => {
     return [...new Set(skills.map((user) => user.location).filter(Boolean))];
   }, [skills]);
 
-  // Unique modes
   const modes = useMemo(() => {
     const allModes = skills.flatMap((user) =>
       user.skills?.flatMap((skill) => skill.modes?.filter(Boolean) || []),
@@ -37,7 +33,6 @@ const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
     return [...new Set(allModes)];
   }, [skills]);
 
-  // Toggle a filter option
   const toggleFilter = (key, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -61,73 +56,76 @@ const FilterPane = ({ skills = [], onApply, isOpen = false, onClose }) => {
     <aside className={`filter-pane ${isOpen ? "filter-pane--open" : ""}`}>
       {!isDesktop && (
         <button className="filter-pane__close" onClick={onClose}>
-          <img src={CloseIcon} alt="" />
+          <img src={CloseIcon} alt="close icon" />
         </button>
       )}
 
-      <div className="filter-pane__header">
+      <header className="filter-pane__header">
         <h3 className="filter-pane__title">Search skills</h3>
-      </div>
+      </header>
 
       {/* Skill Category */}
-      <section className="filter-section">
-        <h4 className="filter-titles">Skill Category</h4>
-        <div className="filter-options category-filter">
-          {categories.length > 0 ? (
-            categories.map((cat, idx) => (
-              <FilterButton
-                key={`${cat}-${idx}`}
-                label={cat}
-                selected={filters.categories.includes(cat)}
-                onClick={() => toggleFilter("categories", cat)}
-              />
-            ))
-          ) : (
-            <span className="filter-empty">No categories available</span>
-          )}
-        </div>
+      <section className="filter-pane__section">
+        <h4 className="filter-pane__section-title">Skill Category</h4>
+        {categories.length > 0 ? (
+          <ul className="filter-pane__options filter-pane__options--category">
+            {categories.map((cat, idx) => (
+              <li key={`${cat}-${idx}`}>
+                <FilterButton
+                  label={cat}
+                  selected={filters.categories.includes(cat)}
+                  onClick={() => toggleFilter("categories", cat)}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span className="filter-pane__empty">No categories available</span>
+        )}
       </section>
 
       {/* Location */}
-      <section className="filter-section">
-        <h4 className="filter-titles">Location</h4>
-        <div className="filter-options location-filter">
-          {locations.length > 0 ? (
-            locations.map((loc, idx) => (
-              <FilterButton
-                key={`${loc}-${idx}`}
-                label={loc}
-                selected={filters.locations.includes(loc)}
-                onClick={() => toggleFilter("locations", loc)}
-              />
-            ))
-          ) : (
-            <span className="filter-empty">No locations available</span>
-          )}
-        </div>
+      <section className="filter-pane__section">
+        <h4 className="filter-pane__section-title">Location</h4>
+        {locations.length > 0 ? (
+          <ul className="filter-pane__options filter-pane__options--location">
+            {locations.map((loc, idx) => (
+              <li key={`${loc}-${idx}`}>
+                <FilterButton
+                  label={loc}
+                  selected={filters.locations.includes(loc)}
+                  onClick={() => toggleFilter("locations", loc)}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span className="filter-pane__empty">No locations available</span>
+        )}
       </section>
 
       {/* Mode */}
-      <section className="filter-section">
-        <h4 className="filter-titles">Mode</h4>
-        <div className="filter-options mode-filter">
-          {modes.length > 0 ? (
-            modes.map((mode, idx) => (
-              <FilterButton
-                key={`${mode}-${idx}`}
-                label={mode}
-                selected={filters.modes.includes(mode)}
-                onClick={() => toggleFilter("modes", mode)}
-              />
-            ))
-          ) : (
-            <span className="filter-empty">No modes available</span>
-          )}
-        </div>
+      <section className="filter-pane__section">
+        <h4 className="filter-pane__section-title">Mode</h4>
+        {modes.length > 0 ? (
+          <ul className="filter-pane__options filter-pane__options--mode">
+            {modes.map((mode, idx) => (
+              <li key={`${mode}-${idx}`}>
+                <FilterButton
+                  label={mode}
+                  selected={filters.modes.includes(mode)}
+                  onClick={() => toggleFilter("modes", mode)}
+                />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span className="filter-pane__empty">No modes available</span>
+        )}
       </section>
 
       {/* Actions */}
-      <div className="filter-actions">
+      <div className="filter-pane__actions">
         <Button
           variant="clear-filters"
           onClick={handleClear}

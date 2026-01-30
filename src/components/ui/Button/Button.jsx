@@ -2,6 +2,7 @@ import "./Button.css";
 
 export default function Button({
   icon,
+  alt = "",
   text,
   type = "button",
   onClick,
@@ -15,7 +16,7 @@ export default function Button({
       type={type}
     >
       <span>{text}</span>
-      {icon && <img src={icon} alt="" className="button__icon" />}
+      {icon && <img src={icon} alt={alt} className="button__icon" />}
     </button>
   );
 }
