@@ -42,7 +42,7 @@ export default function Login() {
         <div className="login__form-input-container">
           <FormInput
             className="login__form-input-field"
-            placeholder="Email or Username"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             name="email"

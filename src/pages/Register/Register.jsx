@@ -40,7 +40,7 @@ export default function Register() {
             id="email"
             name="email"
             type="email"
-            placeholder="Email or Username"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="username"
