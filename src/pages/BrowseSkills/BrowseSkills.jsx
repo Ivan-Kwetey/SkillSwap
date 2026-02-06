@@ -7,8 +7,7 @@ import SearchBar from "../../components/ui/SearchBar/SearchBar";
 import { useUsers } from "../../context/useUsers.js";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import Button from "../../components/ui/Button/Button.jsx";
-
-const ITEMS_PER_PAGE = 4;
+import { ITEMS_PER_PAGE } from "../../data/pagination.js";
 
 const BrowseSkills = ({
   currentUserId,
