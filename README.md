@@ -153,3 +153,5 @@ Active
 ## Link ( https://skillswap-frontend-api.vercel.app )
 
 SkillSwap — Learn together. Grow together.
+
+## Video walkthrough link (https://www.loom.com/share/9535d4d37fe34f07a2226d31901060d0)

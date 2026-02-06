@@ -11,7 +11,7 @@ const Mission = ({ handleRegister }) => {
             Teach what you know. Learn what you love.
           </h2>
           <p className="mission__subtitle">
-            SkillSwap connects people through meaningful skill exchange — no
+            SkillSwap connects people through meaningful skill exchange, no
             money, no pressure. Share your knowledge with others, discover new
             skills you’re curious about, and learn together through real
             connections, whether online or in person.
