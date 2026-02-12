@@ -1,0 +1,15 @@
+.tag,.tag--primary {
+  background-color: #00000078;
+  font-size: 12px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: white;
+
+
+
+}
+
+.tag--member{
+  margin-right: 5px;
+}

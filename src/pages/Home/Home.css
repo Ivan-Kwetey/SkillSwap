@@ -1,0 +1,21 @@
+.home {
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-page {
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  background-color: rgb(234, 230, 230);
+  display: flex;
+
+  padding: clamp(2px, 6vw, 300px);
+}
+
+.coming-soon-img {
+  width: clamp(100px, 100vw, 600px);
+  height: auto;
+}

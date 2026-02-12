@@ -1,0 +1,31 @@
+.highlight-card__avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #F5F5F5;
+}
+
+
+.highlight-card__avatar--user-card{
+  width: 42px;
+  height: 42px;
+}
+
+.highlight-card__avatar--member{
+  width: 120px;
+  height: 120px;
+
+}
+.highlight-card__avatar--navbar{
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+
+@media (max-width: 1329px) {
+  .navbar__avatar {
+    display: flex;
+    align-items: center;
+  }
+}

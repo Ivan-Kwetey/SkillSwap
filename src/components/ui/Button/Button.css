@@ -1,0 +1,204 @@
+.button__primary {
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #0f0f0f;
+  color: white;
+  font-size: 15px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.button--navbar {
+  font-size: 15px;
+  padding: 10px 30px;
+}
+
+.button--navbar:hover {
+  background-color: #262626;
+}
+
+.button--hero {
+  background-color: #0072e5;
+  color: white;
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--hero:hover {
+  background-color: #006bd6;
+}
+
+.button--mission {
+  background-color: #ffffff;
+  color: #0f0f0f;
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--mission:hover {
+  background-color: #f2f2f2;
+}
+
+.button--community {
+  font-size: 18px;
+  padding: 20px 30px;
+}
+
+.button--community:hover {
+  background-color: #262626;
+}
+
+/* //get-started */
+.button--get-started {
+  padding: 20px 30px;
+  background-color: white;
+  color: #0f0f0f;
+  font-size: 18px;
+}
+.button--get-started:hover {
+  background-color: #f2f2f2;
+}
+
+.button--signin {
+  background-color: #0072e5;
+  font-size: 14px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.button--register {
+  font-size: 14px;
+  padding: 10px 30px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.button--clear-filters {
+  background-color: white;
+  color: #0f0f0f;
+  font-size: 12px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.button--apply-filters {
+  background-color: #0072e5;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.button--sign-out {
+  width: 100%;
+  background-color: white;
+  color: #0f0f0f;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+
+.button--cancel-request-pane,
+.button--accept-request,
+.button--decline-request {
+  width: fit-content;
+  background-color: #ce3737;
+  padding: 10px 20px;
+  font-weight: 500;
+}
+.button--accept-request {
+  width: 100%;
+  background-color: #0072e5;
+}
+
+.button--decline-request {
+  width: 100%;
+}
+.button--request-swap {
+  display: flex;
+  padding: 14px 22px;
+  border-radius: 50px;
+  /* background-color: #111114; */
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #0072e5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
+  width: 100%;
+  /* margin: 0 0 0 auto; */
+}
+
+.button--add-user {
+  padding: 14px 22px;
+  border-radius: 50px;
+  background-color: white;
+  color: #0f0f0f;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.123);
+  /* border: 1px solid #e8e8e8; */
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 0.5px 0.5px #3b3b3b;
+}
+
+.button--cancel-request {
+  padding: 14px 22px;
+  border-radius: 50px;
+  background-color: #ce3737;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
+  width: 100%;
+}
+
+.button--ghost {
+  background-color: transparent;
+  color: #757575;
+  font-weight: 500;
+}
+
+.button--member {
+  margin: 0 0 0 auto;
+  display: flex;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #0072e5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.123);
+  width: 100%;
+}
+
+.button--filter-trigger-btn{
+
+  background: #0f0f0f;
+  color: white;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+
+
+}
+
+@media (max-width: 440px) {
+  .button__primary {
+    font-size: 12px;
+  }
+  .button--hero {
+    padding: 15px 25px;
+  }
+
+  .button--register {
+  margin: 0 15px;
+}
+  .button--signin {
+  margin: 0 15px;
+}
+}
